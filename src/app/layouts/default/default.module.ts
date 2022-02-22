@@ -8,6 +8,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { MatSidenavModule, MatDividerModule, MatCardModule, MatPaginatorModule, MatTableModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DashboardService } from 'src/app/modules/dashboard.service';
+import { AllMaterialFolderModule } from 'src/app/allMaterialFolder/material.module';
 
 @NgModule({
   declarations: [
@@ -19,12 +20,8 @@ import { DashboardService } from 'src/app/modules/dashboard.service';
     CommonModule,
     RouterModule,
     SharedModule,
-    MatSidenavModule,
-    MatDividerModule,
     FlexLayoutModule,
-    MatCardModule,
-    MatPaginatorModule,
-    MatTableModule
+    AllMaterialFolderModule
   ],
   providers: [
     DashboardService
