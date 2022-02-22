@@ -1,23 +1,21 @@
 {
   "name": "dashboard",
   "version": "0.0.0",
-  "engines": {
-    "node": "16.14.0",
-    "npm": "7.16.0"
-  },
+  "engines": { "node": "16.14.0", "npm": "7.16.0" },
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
+    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "heroku-postbuild": "ng build — prod"
+    "heroku-postbuild": "ng build --prod"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~8.0.1",
     "@angular/cdk": "^8.2.3",
-    "@angular/cli": "~8.0.0",
+    "@angular/cli": "~8.0.4",
     "@angular/common": "~8.0.1",
     "@angular/compiler": "~8.0.1",
     "@angular/compiler-cli": "~8.0.1",
@@ -40,6 +38,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.800.6",
+    "@angular/cli": "~8.0.4",
     "@angular/compiler-cli": "~8.0.1",
     "@angular/language-service": "~8.0.1",
     "@types/jasmine": "~3.3.8",
