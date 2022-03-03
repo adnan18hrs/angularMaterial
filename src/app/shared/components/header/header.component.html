@@ -18,7 +18,11 @@
             <button class="btn" type="submit" style="width: 100%;"><a class=" text-muted" style="text-decoration: none;color:black"><b>Cart</b></a></button>
         </div>
         <div class="col-lg-1 col-2" id='changeBackground1'>
-            <button class="btn" type="submit"><a class=" text-muted" style="text-decoration: none;color:black"><b>More</b></a></button>
+            <button class="btn" type="submit" mat-button [matMenuTriggerFor]="menu"><a class=" text-muted" style="text-decoration: none;color:black"><b>More</b></a></button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>Item 1</button>
+              <button mat-menu-item>Item 2</button>
+            </mat-menu>
         </div>
         <div class="col-lg-2 col-4" style="text-align: center;">
           <button class="btn btn-primary" type="submit">
@@ -28,7 +32,61 @@
       </div>
     </div>
 </div>
-    
+
+<br>
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <ng-container *ngIf="widthIsForDropdown">
+          <span class="text-muted disable" style="text-decoration: none;"> <b>All category</b></span>
+        </ng-container>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+          <ul class="navbar-nav me-auto my-2 my-lg-0  nav-fill liHover" style="--bs-scroll-height: 100px;width: 100%;">
+            <li class="nav-item list-group-item">
+              <a class="nav-link" aria-current="page" routerLinkActive="list-item-active" routerLink="/">Electronics</a>
+            </li>
+            <li class="nav-item list-group-item">
+              <a class="nav-link" aria-current="page" routerLinkActive="list-item-active" routerLink="/">Fashion</a>
+            </li>
+            <li class="nav-item list-group-item">
+              <a class="nav-link" aria-current="page" routerLinkActive="list-item-active" routerLink="/">Grocery</a>
+            </li>
+            <!--<li class="nav-item   list-group-item">
+              <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item>Item 1</button>
+                <button mat-menu-item>Item 2</button>
+              </mat-menu>
+            </li>-->
+            <li class="nav-item list-group-item">
+              <a class="nav-link"  routerLinkActive="list-item-active" routerLink="/posts">Home Appliances</a>
+            </li>
+            <li class="nav-item dropdown list-group-item">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Gadgets
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+            <li class="nav-item list-group-item">
+              <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Toy</a>
+            </li>
+          </ul>
+        </div>  
+      </div>
+    </nav>
+  </div>
+
+
+
+
+
 <!--
 <div class="container">
     <div class="row">
@@ -53,54 +111,8 @@
     </div>
 </div>
 -->
-
-
-<br>
-<div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <ng-container *ngIf="widthIsForDropdown">
-          <span class="text-muted disable" style="text-decoration: none;"> <b>All category</b></span>
-        </ng-container>
-        <div class="collapse navbar-collapse" id="navbarScroll">
-          <ul class="navbar-nav me-auto my-2 my-lg-0  nav-fill" style="--bs-scroll-height: 100px;width: 100%;" >
-            <li class="nav-item list-group-item">
-              <a class="nav-link" aria-current="page" routerLinkActive="list-item-active" routerLink="/">Electronics</a>
-            </li>
-            <li class="nav-item   list-group-item">
-              <a class="nav-link" aria-current="page" routerLinkActive="list-item-active" routerLink="/">Fashion</a>
-            </li>
-            <li class="nav-item   list-group-item">
-              <a class="nav-link" aria-current="page" routerLinkActive="list-item-active" routerLink="/">Grocery</a>
-            </li>
-            <li class="nav-item   list-group-item">
-              <a class="nav-link"  routerLinkActive="list-item-active" routerLink="/posts">Home Appliances</a>
-            </li>
-            <li class="nav-item dropdown   list-group-item">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Gadgets
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </li>
-            <li class="nav-item list-group-item">
-              <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Toy</a>
-            </li>
-          </ul>
-        </div>  
-      </div>
-    </nav>
-  </div>
-
-
-
+ 
+  
 
 <!--
 <mat-toolbar color="primary" style="background-color:cadetblue">

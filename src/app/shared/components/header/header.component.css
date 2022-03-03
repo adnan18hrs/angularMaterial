@@ -13,3 +13,12 @@ ul li {
 #changeBackground1 {
   text-align: center;
 }
+
+.liHover li:hover {
+  background: rgb(206, 206, 206);
+}
+
+.liHover li a:hover {
+  font-weight: bold;
+  color: white;
+}
