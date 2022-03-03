@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +11,26 @@ export class HeaderComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() { }
+  public getScreenWidth: any;
+  public getScreenHeight: any;
+  public widthIs:boolean;
+  
+  ngOnInit() {
+      this.getScreenWidth = window.innerWidth;
+      this.getScreenHeight = window.innerHeight;
+  }
+  
+  @HostListener('window:resize', ['$event'])
+  onWindowResize() {
+    if (this.getScreenWidth<600){
+      this.widthIs=true;
+    }
+    else{
+      this.widthIs=false;
+    }
+    this.getScreenWidth = window.innerWidth;
+    this.getScreenHeight = window.innerHeight;
+  }
 
   toggleSideBar() {
     this.toggleSideBarForMe.emit();
@@ -23,3 +42,4 @@ export class HeaderComponent implements OnInit {
   }
 
 }
+

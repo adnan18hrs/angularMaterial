@@ -1,3 +1,15 @@
 ul li {
   list-style: none;
 }
+
+#changeBackground:hover {
+  background-color: gray;
+}
+
+#changeBackground1:hover {
+  background-color: green;
+}
+
+#changeBackground1 {
+  text-align: center;
+}
