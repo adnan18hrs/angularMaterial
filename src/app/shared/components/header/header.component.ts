@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
   public getScreenWidth: any;
   public getScreenHeight: any;
   public widthIs:boolean;
+  public widthIsForDropdown:boolean;
   
   ngOnInit() {
       this.getScreenWidth = window.innerWidth;
@@ -27,6 +28,12 @@ export class HeaderComponent implements OnInit {
     }
     else{
       this.widthIs=false;
+    }
+    if (this.getScreenWidth<990){
+      this.widthIsForDropdown=true;
+    }
+    else{
+      this.widthIsForDropdown=false;
     }
     this.getScreenWidth = window.innerWidth;
     this.getScreenHeight = window.innerHeight;

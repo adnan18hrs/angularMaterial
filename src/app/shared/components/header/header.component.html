@@ -11,9 +11,6 @@
             </form>
         </div>
 
-        <div class="col-lg-2 col-4" style="text-align: center;">
-            <a class="nav-link" style="color:black;" routerLinkActive="list-item-active" routerLink="/posts"><span class="bi-search"></span>Login</a>
-        </div>
         <div class="col-lg-1 col-4" id='changeBackground1'>
             <button class="btn" type="submit" style="width: 100%;">Wishlist</button>
         </div>
@@ -23,6 +20,9 @@
         <div class="col-lg-1 col-2" id='changeBackground1'>
             <button class="btn" type="submit">More</button>
         </div>
+        <div class="col-lg-2 col-4" style="text-align: center;">
+          <a class="nav-link" style="color:black;background-color: aquamarine;" routerLinkActive="list-item-active" routerLink="/posts"><span class="bi-search"></span>Login</a>
+      </div>
       </div>
     </div>
 </div>
@@ -53,30 +53,32 @@
 -->
 
 
-<br><br><br>
+<br>
 <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <span style="font-weight: bolder;">All category</span>
-        <div class="collapse navbar-collapse" id="navbarScroll" style="border: 2px solid red;">
-          <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;border: 2px solid black;margin: auto;width: 100%;" >
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" routerLinkActive="list-item-active" routerLink="/" style="background-color: gold;">Electronics</a>
+        <ng-container *ngIf="widthIsForDropdown">
+          <span style="font-weight: bolder;">All category</span>
+        </ng-container>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+          <ul class="navbar-nav me-auto my-2 my-lg-0  nav-fill" style="--bs-scroll-height: 100px;width: 100%;" >
+            <li class="nav-item list-group-item">
+              <a class="nav-link" aria-current="page" routerLinkActive="list-item-active" routerLink="/">Electronics</a>
             </li>
-            <li class="nav-item  ">
-              <a class="nav-link" aria-current="page" routerLinkActive="list-item-active" routerLink="/" style="background-color: gold;">Fashion</a>
+            <li class="nav-item   list-group-item">
+              <a class="nav-link" aria-current="page" routerLinkActive="list-item-active" routerLink="/">Fashion</a>
             </li>
-            <li class="nav-item  ">
-              <a class="nav-link" aria-current="page" routerLinkActive="list-item-active" routerLink="/" style="background-color: gold;">Grocery</a>
+            <li class="nav-item   list-group-item">
+              <a class="nav-link" aria-current="page" routerLinkActive="list-item-active" routerLink="/">Grocery</a>
             </li>
-            <li class="nav-item  ">
-              <a class="nav-link"  routerLinkActive="list-item-active" routerLink="/posts" style="background-color: gold;">Home Appliances</a>
+            <li class="nav-item   list-group-item">
+              <a class="nav-link"  routerLinkActive="list-item-active" routerLink="/posts">Home Appliances</a>
             </li>
-            <li class="nav-item dropdown  ">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: gold;">
+            <li class="nav-item dropdown   list-group-item">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Gadgets
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
@@ -86,8 +88,8 @@
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
               </ul>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" tabindex="-1" aria-disabled="true" style="background-color: gold;">Toy</a>
+            <li class="nav-item list-group-item">
+              <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Toy</a>
             </li>
           </ul>
         </div>  
