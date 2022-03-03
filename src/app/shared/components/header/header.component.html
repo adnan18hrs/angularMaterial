@@ -1,28 +1,30 @@
 <div class="bg-light">
     <div class="container" style="padding: 5px">
       <div class="row">
-        <div class="col-lg-1 col-1" id="changeBackground1">
-          <a class="nav-link active"  routerLinkActive="list-item-active" routerLink="/posts">LOGO</a>
+        <div class="col-lg-1 col-2" id="changeBackground1">
+          <a class="nav-link active text-muted"  routerLinkActive="list-item-active" routerLink="/posts" style="text-decoration: none;color:black"><b>LOGO</b></a>
         </div>
-        <div class="col-lg-6 col-11" id='changeBackground1'>
+        <div class="col-lg-6 col-10" id='changeBackground1'>
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn" type="submit">Search</button>
+                <button class="btn" type="submit"><a class=" text-muted" style="text-decoration: none;color:black"><b>Search</b></a></button>
             </form>
         </div>
 
         <div class="col-lg-1 col-4" id='changeBackground1'>
-            <button class="btn" type="submit" style="width: 100%;">Wishlist</button>
+            <button class="btn" type="submit" style="width: 100%;"><a class=" text-muted" style="text-decoration: none;color:black"><b>Wishlist</b></a></button>
         </div>
         <div class="col-lg-1 col-2" id='changeBackground1'>
-            <button class="btn" type="submit" style="width: 100%;">Cart</button>
+            <button class="btn" type="submit" style="width: 100%;"><a class=" text-muted" style="text-decoration: none;color:black"><b>Cart</b></a></button>
         </div>
         <div class="col-lg-1 col-2" id='changeBackground1'>
-            <button class="btn" type="submit">More</button>
+            <button class="btn" type="submit"><a class=" text-muted" style="text-decoration: none;color:black"><b>More</b></a></button>
         </div>
         <div class="col-lg-2 col-4" style="text-align: center;">
-          <a class="nav-link" style="color:black;background-color: aquamarine;" routerLinkActive="list-item-active" routerLink="/posts"><span class="bi-search"></span>Login</a>
-      </div>
+          <button class="btn btn-primary" type="submit">
+            <a class="text-muted" style="text-decoration: none;" routerLink="/posts"><span class="bi-search"></span><b style="color: white;">Login</b></a>
+          </button>
+        </div>
       </div>
     </div>
 </div>
@@ -61,7 +63,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <ng-container *ngIf="widthIsForDropdown">
-          <span style="font-weight: bolder;">All category</span>
+          <span class="text-muted disable" style="text-decoration: none;"> <b>All category</b></span>
         </ng-container>
         <div class="collapse navbar-collapse" id="navbarScroll">
           <ul class="navbar-nav me-auto my-2 my-lg-0  nav-fill" style="--bs-scroll-height: 100px;width: 100%;" >
