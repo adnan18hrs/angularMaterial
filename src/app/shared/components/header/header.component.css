@@ -22,3 +22,10 @@ ul li {
   font-weight: bold;
   color: white;
 }
+
+a.wide {
+}
+
+.card1:hover {
+  border: 2px solid black;
+}

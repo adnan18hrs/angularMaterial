@@ -10,7 +10,13 @@ import { AreaComponent } from './widgets/area/area.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { CardComponent } from './widgets/card/card.component';
 import { PieComponent } from './widgets/pie/pie.component';
-
+import { HomeComponent } from '../modules/home/home.component';
+import { CardsComponent } from '../modules/cards/cards.component';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from '../app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -18,14 +24,22 @@ import { PieComponent } from './widgets/pie/pie.component';
     SidebarComponent,
     AreaComponent,
     CardComponent,
-    PieComponent
+    PieComponent,
+    HomeComponent,
+    CardsComponent
   ],
   imports: [
     CommonModule,
     FlexLayoutModule,
     RouterModule,
     HighchartsChartModule,
-    AllMaterialFolderModule
+    AllMaterialFolderModule,
+    FormsModule,
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   exports: [
     HeaderComponent,
@@ -33,7 +47,9 @@ import { PieComponent } from './widgets/pie/pie.component';
     SidebarComponent,
     AreaComponent,
     CardComponent,
-    PieComponent
+    PieComponent,
+    HomeComponent,
+    CardsComponent
   ]
 })
 export class SharedModule { }
