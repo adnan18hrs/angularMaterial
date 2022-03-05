@@ -32,7 +32,7 @@ export class HomeService {
     console.log("loggingData.username = ", loggingData.username);
     let params = this.createParams3(loggingData);
     console.log("params = ",params);
-    return this.http.get<any>(baseLoggingUrl, {params, headers:headers});
+    return this.http.post<any>(baseLoggingUrl, {params, headers:headers});
   }
 
   private createParams3(loggingData:LoggingData){
