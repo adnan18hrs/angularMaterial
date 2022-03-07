@@ -12,14 +12,11 @@ const getUserByMailID = 'http://localhost:8080/api/user/userByMailId/'
 @Injectable({
   providedIn: 'root'
 })
-export class HomeService {
-
-  
+export class LoginService {
   headersObj = new HttpHeaders({'Authorization':'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG5hbiIsImlhdCI6MTY0NjU0NzIwOSwiZXhwIjoxNjQ2NjMzNjA5fQ._9cVjnbazgs_xJvM0qbEKwfNHxwitWjhUcXUMFpNFNWhj_zpMkHUd545osbNKrPDGHGMWvtdlu5ps6nGCRoDjg','Content-Type': 'application/json'});
   getHttpHeader(){ console.log("Getting HTTP headers"); return this.headersObj; }
-
   constructor(private http: HttpClient) { }
-
+  
   public getAll(headers:any): Observable<any> {
     console.log("Backend RAW response = ",this.http.get<any>(baseUrl, {headers:headers}));
     return this.http.get<any>(baseUrl, {headers:headers});
@@ -43,3 +40,7 @@ export class HomeService {
     return new HttpParams({fromObject:{username:loggingData.username,password:loggingData.password}})
   } 
 }
+
+  
+
+  

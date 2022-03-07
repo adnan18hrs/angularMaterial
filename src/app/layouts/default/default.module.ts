@@ -8,23 +8,43 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { MatSidenavModule, MatDividerModule, MatCardModule, MatPaginatorModule, MatTableModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DashboardService } from 'src/app/modules/dashboard.service';
+import { LoginComponent } from 'src/app/modules/login/login.component';
 import { AllMaterialFolderModule } from 'src/app/allMaterialFolder/material.module';
+import { HighchartsChartModule } from 'highcharts-angular';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     DefaultComponent,
     DashboardComponent,
-    PostsComponent
+    PostsComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     SharedModule,
     FlexLayoutModule,
-    AllMaterialFolderModule
+    AllMaterialFolderModule,
+    CommonModule,
+    FlexLayoutModule,
+    RouterModule,
+    HighchartsChartModule,
+    AllMaterialFolderModule,
+    FormsModule,
+    BrowserModule,
+    //AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule
+
   ],
   providers: [
-    DashboardService
+    DashboardService,
+    LoginComponent
   ]
 })
 export class DefaultModule { }

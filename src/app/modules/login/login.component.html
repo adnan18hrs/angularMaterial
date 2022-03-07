@@ -1,6 +1,7 @@
+
 <div class="container">
-    <p>Home works!</p>
-    <!--
+    <p>Login works!</p>
+    
     <div class="d-flex justify-content-center">
         <form  #userformBooking="ngForm" (ngSubmit)="onLogin(userformBooking.value)">
             <div class="mb-3">
@@ -9,15 +10,8 @@
             <div class="mb-3">
                 <input ngModel placeholder="Enter password" name="password" required class="iInput" type="password" class="form-control">
             </div>
-            <button type="submit" class="btn btn-primary"><b>Login</b></button>
+            <button class="btn btn-primary" routerLinkActive="list-item-active" routerLink="/login" ><b>Login</b></button>
         </form>
     </div>
--->
+    
 </div>
-<div *ngFor="let content of data">
-    <app-cards></app-cards>
-    <div *ngFor="let category of data">
-      <span>{{category}}</span>
-    </div>
-</div>
-

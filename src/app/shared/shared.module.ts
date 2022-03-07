@@ -17,6 +17,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from '../app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from '../modules/login/login.component';
 @NgModule({
   declarations: [
     HeaderComponent,

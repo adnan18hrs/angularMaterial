@@ -8,6 +8,7 @@ import { HomeService } from 'src/app/modules/home.service';
 })
 export class HomeComponent implements OnInit {
   headers:any; 
+  public popup:boolean;
   constructor(private homeService:HomeService) { }
   data: number[] = [1, 2, 3];
   
