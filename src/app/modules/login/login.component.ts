@@ -3,7 +3,8 @@ import { LoginService } from 'src/app/modules/login.service';
 import { LoggingData } from 'src/app/model/loggingData';
 import { UserData } from 'src/app/model/userData';
 import { AppService } from 'src/app/app.service';
-import { UpdateService } from 'src/app/modules/service/UpdateService.component';
+import { AuthService } from 'src/app/modules/service/AuthService.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,15 +14,19 @@ import { UpdateService } from 'src/app/modules/service/UpdateService.component';
 export class LoginComponent implements OnInit {
 
   public currentUser: UserData;
-  public updateService:UpdateService;
-  headers:any;
+  public authService:AuthService;
+  public headers:any;
   public userIsPresent:boolean;
-  private appService: AppService;
-  //localStorage.getItem("isLoggedIn") === "true"
-  constructor(private loginService:LoginService) { 
-    this.updateService = new UpdateService();
-    this.userIsPresent=this.updateService.getIsLogged();
+  public appService: AppService;
   
+  //localStorage.getItem("isLoggedIn") === "true"
+  constructor(private loginService:LoginService, private router:Router) { 
+    
+    console.log("top login constructor");
+    this.authService = new AuthService();
+    this.userIsPresent=this.authService.getIsLogged();
+    this.currentUser=this.authService.getCurrentUser();
+    console.log("bottom login constructor");
   }
   validateEmail(email:any) {
     return true;
@@ -30,26 +35,30 @@ export class LoginComponent implements OnInit {
   }
 
   public onLogin(dataUI:LoggingData){
+    
+    console.log("top onLogin");
     if(true){
       console.log("username = ",dataUI.username);
       console.log("password = ",dataUI.password);
       this.loginService.tryLogging(dataUI,this.headers).subscribe(
         (response:any)=>{
           this.setUserDetails(response);
-          //this.appService.setUserDetails(response);
-          //console.log("user from backend is ",this.userData.username);
           console.log("response is ",response);
-            //alert(response.message);
         }
       )
+      this.router.navigate(["/login"]);
     }
     else{alert("Please insert correct Email Id");}
   }
+
   setUserDetails(response){
+    
+    console.log("top setUserDetails");
+
 
     this.currentUser=new UserData();
     this.appService=new AppService();
-    this.updateService=new UpdateService();
+    this.authService=new AuthService();
     this.currentUser.username = response['username'];
     this.currentUser.token = response['token'];
     this.currentUser.email = response['email'];
@@ -57,22 +66,24 @@ export class LoginComponent implements OnInit {
     this.currentUser.id = response['id'];
     this.currentUser.type = response['type'];
     this.currentUser.message = response['message'];
-    console.log("calling setHttpHeaders");
+
     this.appService.setHttpHeader(this.currentUser.token);
     this.appService.setCurrentUser(this.currentUser);
-    //window.localStorage.setItem('userIsPresent', 'true');
 
-    this.updateService.setIsLogged(true);
-
-    //this.userIsPresent = true;
     
-    //this.localStorage.setItem('loginOrNot','true');
+    console.log("bottom setUserDetails");
+    
+    this.authService.setCurrentUser(this.currentUser);
+    this.authService.setToken(this.currentUser.token);
+    this.authService.setIsLogged(true);
   }
-  
 
   ngOnInit() {
+    
+    console.log("top ngOnInit");
     this.appService=new AppService();
     this.headers = this.appService.getHttpHeader(); //this.myList.filter=""; this.myList.data.length=0;
+    console.log("bottom ngOnInit");
   }
 
   

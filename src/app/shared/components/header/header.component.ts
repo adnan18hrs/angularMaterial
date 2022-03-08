@@ -1,4 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, HostListener } from '@angular/core';
+import { AuthService } from 'src/app/modules/service/AuthService.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,8 +10,13 @@ import { Component, OnInit, Output, EventEmitter, HostListener } from '@angular/
 export class HeaderComponent implements OnInit {
 
   @Output() toggleSideBarForMe: EventEmitter<any> = new EventEmitter();
-
-  constructor() { }
+  public userIsPresent:string;
+  public authService:AuthService;
+  
+  constructor(private router:Router) {
+    //this.userIsPresent = localStorage.getItem('loggedIn');
+    this.userIsPresent = JSON.parse(localStorage.getItem('loggedIn'));
+   }
 
   public getScreenWidth: any;
   public getScreenHeight: any;
@@ -19,6 +26,14 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
       this.getScreenWidth = window.innerWidth;
       this.getScreenHeight = window.innerHeight;
+  }
+  logout(){
+    console.log("logging out");
+    this.authService = new AuthService();
+    this.authService.clearCurrntUser();
+    this.authService.clearLoggedIn();
+    this.authService.clearLoggedIn();
+    this.router.navigate(["/login"]);
   }
   
   @HostListener('window:resize', ['$event'])

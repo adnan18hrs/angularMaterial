@@ -26,7 +26,8 @@
         </div>
         <div class="col-lg-2 col-4" style="text-align: center;">
           <button class="btn btn-primary" type="submit">
-            <a class="text-muted" style="text-decoration: none;" routerLink="/login"><span class="bi-search"></span><b style="color: white;">Login</b></a>
+            <a *ngIf="!userIsPresent" class="text-muted" style="text-decoration: none;" routerLink="/login"><span class="bi-search"></span><b style="color: white;">Login</b></a>
+            <a *ngIf="userIsPresent" class="text-muted" style="text-decoration: none;" (click)="logout()"><b style="color: white;">Logout</b></a>
           </button>
         </div>
       </div>

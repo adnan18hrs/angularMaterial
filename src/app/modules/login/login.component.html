@@ -2,7 +2,7 @@
 <div class="container">
     <p>Login works!</p>
     
-    <div class="d-flex justify-content-center">
+    <div *ngIf="!userIsPresent" class="d-flex justify-content-center">
         <form  #userformBooking="ngForm" (ngSubmit)="onLogin(userformBooking.value)">
             <div class="mb-3">
                 <input ngModel placeholder="Enter Username" name="username" required class="iInput" type="text" class="form-control">
@@ -17,6 +17,7 @@
 </div>
 
 <div class="container" *ngIf="userIsPresent">
+    
     <p>successfully logged in {{userIsPresent}}</p>
     <p>Username =  <b>{{currentUser.username}}</b></p>
     <p>Email = <b>{{currentUser.email}}</b></p>
