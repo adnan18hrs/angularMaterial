@@ -8,12 +8,13 @@ import { UserData } from 'src/app/model/userData';
   styleUrls: ['./posts.component.css']
 })
 export class PostsComponent implements OnInit {
-  public appService:AppService;
-  //public userData=new UserData();
-  //public halla:string;
+  public appService : AppService;
+  public currentUserData: UserData;
+  public halla:string;
   constructor() { 
-    //this.userData=this.appService.getUserDetails();
-    //this.halla=this.userData.username;
+    this.appService = new AppService();
+    this.currentUserData=this.appService.getCurrentUser();
+    this.halla=this.currentUserData.email;
   }
 
   ngOnInit() {

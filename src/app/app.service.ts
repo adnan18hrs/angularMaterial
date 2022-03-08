@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserData } from 'src/app/model/userData';
 
@@ -6,26 +7,25 @@ import { UserData } from 'src/app/model/userData';
 })
 export class AppService {
   private _localStorage:Storage;
+  private currentUser:UserData;
+  headers = new HttpHeaders();
 
-  userData:UserData;
-  public setUserDetails(response:any){
+  public setHttpHeader(token){
+    console.log("inside setHttpHeader");
+    this.headers = this.headers.append('Authorization', 'Bearer '+token);
+    this.headers = this.headers.append('Content-Type', 'application/json');
     //const jsonData = JSON.stringify(response)
-    //console.log("jsonData = ",jsonData);
     //this._localStorage.setItem('myData', jsonData);
     //console.log("loalstorag = ",this._localStorage.getItem('myData'));
-    let userData1 = new UserData();
-    userData1.username = response['username'];
-    userData1.token = response['token'];
-    userData1.email = response['email'];
-    userData1.roles = response['roles'];
-    userData1.id = response['id'];
-    userData1.type = response['type'];
-    userData1.message = response['message'];
-    this.userData=userData1;
-    console.log("from app service useer is = ",this.userData.username);
   }
-  public getUserDetails(){
-    return this.userData;
+  
+  public setCurrentUser(currentUser:UserData){
+    this.currentUser = currentUser;
   }
+  public getCurrentUser(){
+    return this.currentUser;
+  }
+  getHttpHeader(){ console.log("Getting HTTP headers"); return this.headers; }
+  
   constructor() { }
 }

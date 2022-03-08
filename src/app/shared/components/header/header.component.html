@@ -12,13 +12,13 @@
         </div>
 
         <div class="col-lg-1 col-4" id='changeBackground1'>
-            <button class="btn" type="submit" style="width: 100%;"><a class=" text-muted" style="text-decoration: none;color:black"><b>Wishlist</b></a></button>
+            <button class="btn" type="submit" style="width: 100%;"><a class=" text-muted" style="text-decoration: none;color:black" routerLink="/posts"><b>Wishlist</b></a></button>
         </div>
         <div class="col-lg-1 col-2" id='changeBackground1'>
-            <button class="btn" type="submit" style="width: 100%;"><a class=" text-muted" style="text-decoration: none;color:black"><b>Cart</b></a></button>
+            <button class="btn" type="submit" style="width: 100%;"><a class=" text-muted" style="text-decoration: none;color:black" routerLink="/posts"><b>Cart</b></a></button>
         </div>
         <div class="col-lg-1 col-2" id='changeBackground1'>
-            <button class="btn" type="submit" mat-button [matMenuTriggerFor]="menu"><a class=" text-muted" style="text-decoration: none;color:black"><b>More</b></a></button>
+            <button class="btn" type="submit" mat-button [matMenuTriggerFor]="menu"><a class=" text-muted" style="text-decoration: none;color:black" routerLink="/posts"><b>More</b></a></button>
             <mat-menu #menu="matMenu">
               <button mat-menu-item>Item 1</button>
               <button mat-menu-item>Item 2</button>
