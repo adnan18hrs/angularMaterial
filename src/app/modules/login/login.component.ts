@@ -15,11 +15,14 @@ export class LoginComponent implements OnInit {
   public currentUser: UserData;
   public updateService:UpdateService;
   headers:any;
-  private appService: AppService;
   public userIsPresent:boolean;
-  public localStorage:Storage;
+  private appService: AppService;
   //localStorage.getItem("isLoggedIn") === "true"
-  constructor(private loginService:LoginService) { }
+  constructor(private loginService:LoginService) { 
+    this.updateService = new UpdateService();
+    this.userIsPresent=this.updateService.getIsLogged();
+  
+  }
   validateEmail(email:any) {
     return true;
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -57,11 +60,11 @@ export class LoginComponent implements OnInit {
     console.log("calling setHttpHeaders");
     this.appService.setHttpHeader(this.currentUser.token);
     this.appService.setCurrentUser(this.currentUser);
-    window.localStorage.setItem('userIsPresent', 'true');
+    //window.localStorage.setItem('userIsPresent', 'true');
 
     this.updateService.setIsLogged(true);
 
-    this.userIsPresent = true;
+    //this.userIsPresent = true;
     
     //this.localStorage.setItem('loginOrNot','true');
   }
