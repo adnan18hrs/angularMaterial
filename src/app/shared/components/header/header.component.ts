@@ -1,6 +1,8 @@
 import { Component, OnInit, Output, EventEmitter, HostListener } from '@angular/core';
 import { AuthService } from 'src/app/modules/service/AuthService.component';
 import { Router } from '@angular/router';
+import { LoginComponent } from 'src/app/modules/login/login.component';
+import { LoginService } from 'src/app/modules/login.service';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +15,7 @@ export class HeaderComponent implements OnInit {
   public userIsPresent:string;
   public authService:AuthService;
   
-  constructor(private router:Router) {
+  constructor(private router:Router, public loginService:LoginService) {
     //this.userIsPresent = localStorage.getItem('loggedIn');
     this.userIsPresent = JSON.parse(localStorage.getItem('loggedIn'));
    }
@@ -24,8 +26,11 @@ export class HeaderComponent implements OnInit {
   public widthIsForDropdown:boolean;
   
   ngOnInit() {
-      this.getScreenWidth = window.innerWidth;
-      this.getScreenHeight = window.innerHeight;
+    console.log("inside ngOnit");
+    this.userIsPresent = JSON.parse(localStorage.getItem('loggedIn'));
+    console.log("userIsPresent = ",this.userIsPresent);
+    this.getScreenWidth = window.innerWidth;
+    this.getScreenHeight = window.innerHeight;
   }
   logout(){
     console.log("logging out");
@@ -34,8 +39,13 @@ export class HeaderComponent implements OnInit {
     this.authService.clearLoggedIn();
     this.authService.clearLoggedIn();
     this.router.navigate(["/login"]);
+    this.loginService.refreshNgOnit();
     this.userIsPresent = JSON.parse(localStorage.getItem('loggedIn'));
-    
+  }
+
+  runNgOnit(){
+    console.log("inside header component");
+    this.ngOnInit();
   }
   
   @HostListener('window:resize', ['$event'])

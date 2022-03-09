@@ -32,6 +32,10 @@ export class LoginService {
     console.log("inside createParams3 function of service class of home component");
     return new HttpParams({fromObject:{username:loggingData.username,password:loggingData.password}})
   } 
+  
+  refreshNgOnit(){
+    window.location.reload();
+  }
 }
 
   

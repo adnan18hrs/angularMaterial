@@ -5,6 +5,7 @@ import { UserData } from 'src/app/model/userData';
 import { AppService } from 'src/app/app.service';
 import { AuthService } from 'src/app/modules/service/AuthService.component';
 import { Router } from '@angular/router';
+import { TransferService } from 'src/app/shared/transfer.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
   public appService: AppService;
   
   //localStorage.getItem("isLoggedIn") === "true"
-  constructor(private loginService:LoginService, private router:Router) { 
+  constructor(private loginService:LoginService, private router:Router, public transferService:TransferService) { 
     
     console.log("top login constructor");
     this.authService = new AuthService();
@@ -77,7 +78,10 @@ export class LoginComponent implements OnInit {
     this.authService.setToken(this.currentUser.token);
     this.authService.setIsLogged(true);
     this.userIsPresent = JSON.parse(localStorage.getItem('loggedIn'));
+
+    this.transferService.refreshNgOnit();
   }
+  
 
   ngOnInit() {
     
