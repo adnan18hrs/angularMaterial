@@ -76,6 +76,7 @@ export class LoginComponent implements OnInit {
     this.authService.setCurrentUser(this.currentUser);
     this.authService.setToken(this.currentUser.token);
     this.authService.setIsLogged(true);
+    this.userIsPresent = JSON.parse(localStorage.getItem('loggedIn'));
   }
 
   ngOnInit() {

@@ -34,6 +34,8 @@ export class HeaderComponent implements OnInit {
     this.authService.clearLoggedIn();
     this.authService.clearLoggedIn();
     this.router.navigate(["/login"]);
+    this.userIsPresent = JSON.parse(localStorage.getItem('loggedIn'));
+    
   }
   
   @HostListener('window:resize', ['$event'])
