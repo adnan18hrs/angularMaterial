@@ -9,6 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from './shared/shared.module';
 import { HeaderComponent } from './shared/components/header/header.component';
+import { HttpClientModule } from '@angular/common/http';
+import { SignupComponent } from './modules/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { HeaderComponent } from './shared/components/header/header.component';
     CommonModule,
     ReactiveFormsModule,
     SharedModule,
-    DefaultModule
+    DefaultModule,
+    HttpClientModule
   ],
   providers: [HeaderComponent],
   bootstrap: [AppComponent]

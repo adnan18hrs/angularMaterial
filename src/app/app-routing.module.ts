@@ -6,6 +6,7 @@ import { PostsComponent } from './modules/posts/posts.component';
 import { HomeComponent } from './modules/home/home.component';
 import { LoginComponent } from './modules/login/login.component';
 import { CardsComponent } from './modules/cards/cards.component';
+import { SignupComponent } from './modules/signup/signup.component';
 
 const routes: Routes = [{
   path: '',
@@ -19,6 +20,9 @@ const routes: Routes = [{
   }, {
     path: 'login',
     component: LoginComponent
+  }, {
+    path: 'signup',
+    component: SignupComponent
   }]
 }];
 

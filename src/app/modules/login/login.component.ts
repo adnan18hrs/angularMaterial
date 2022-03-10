@@ -6,6 +6,7 @@ import { AppService } from 'src/app/app.service';
 import { AuthService } from 'src/app/modules/service/AuthService.component';
 import { Router } from '@angular/router';
 import { TransferService } from 'src/app/shared/transfer.service';
+import { HeaderComponent } from 'src/app/shared/components/header/header.component';
 
 @Component({
   selector: 'app-login',

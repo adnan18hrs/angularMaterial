@@ -1,0 +1,23 @@
+
+<div class="container"> 
+    <div class="d-flex justify-content-center">
+        <form #signupForm="ngForm" (ngSubmit)="onSignup(signupForm.value)">
+            <div class="mb-3">
+                <input ngModel placeholder="Enter email" name="username" required class="iInput" type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+                <input ngModel placeholder="Enter password" name="password" required class="iInput" type="password" class="form-control">
+            </div>
+            <div class="mb-3">
+                <input ngModel placeholder="Re-enter password" name="repassword" required class="iInput" type="password" class="form-control">
+            </div>
+            <div class="mb-3">
+                <select  [(ngModel)]="selectedValue" class="form-select" aria-label="Default select example" name="role">
+                    <option selected>Select role</option>
+                    <option *ngFor="let rol of roles" [ngValue]="rol.sign" name="role">{{rol.name}}</option>
+                  </select>
+            </div>
+            <button class="btn btn-primary" routerLinkActive="list-item-active"><b>Submit</b></button>
+        </form>
+    </div>
+</div>

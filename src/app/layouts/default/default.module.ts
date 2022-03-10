@@ -15,13 +15,15 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SignupComponent } from 'src/app/modules/signup/signup.component';
 
 @NgModule({
   declarations: [
     DefaultComponent,
     DashboardComponent,
     PostsComponent,
-    LoginComponent
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     CommonModule,
@@ -38,13 +40,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     //AppRoutingModule,
     FormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
 
   ],
   providers: [
     DashboardService,
-    LoginComponent
+    
+    SignupComponent
   ]
 })
 export class DefaultModule { }
