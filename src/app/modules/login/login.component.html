@@ -5,7 +5,7 @@
     <div *ngIf="!userIsPresent" class="d-flex justify-content-center">
         <form  #userformBooking="ngForm" (ngSubmit)="onLogin(userformBooking.value)">
             <div class="mb-3">
-                <input ngModel placeholder="Enter Username" name="username" required class="iInput" type="text" class="form-control">
+                <input ngModel placeholder="Enter Email Id" name="username" required class="iInput" type="text" class="form-control">
             </div>
             <div class="mb-3">
                 <input ngModel placeholder="Enter password" name="password" required class="iInput" type="password" class="form-control">

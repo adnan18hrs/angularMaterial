@@ -44,8 +44,13 @@ export class LoginComponent implements OnInit {
       console.log("password = ",dataUI.password);
       this.loginService.tryLogging(dataUI,this.headers).subscribe(
         (response:any)=>{
-          this.setUserDetails(response);
-          console.log("response is ",response);
+          console.log("response message is ",response['message']);
+          if(response['message']=='SUCCESSFULLY LOGGED IN'){
+            this.setUserDetails(response);
+          }
+          else{
+            alert("Please check you email ID and password onece again");
+          }
         }
       )
       this.router.navigate(["/login"]);
