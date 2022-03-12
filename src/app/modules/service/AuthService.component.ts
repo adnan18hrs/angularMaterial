@@ -21,18 +21,18 @@ export class AuthService{
     //public token = JSON.parse(localStorage.getItem('refreshtoken') || 'null');
     
     setIsLogged(isLogged:boolean){
-        console.log("top setIsLogged");
+        //console.log("top setIsLogged");
         localStorage.setItem('loggedIn', 'true');
-        console.log("bottom setIsLogged");
+        //console.log("bottom setIsLogged");
         //this.isLogged.next(isLogged);
     }
     getIsLogged(){
-        console.log("top getIsLogged");
+        //console.log("top getIsLogged");
         return JSON.parse(localStorage.getItem('loggedIn')/* || this.userIsPresent)*/);
     }
     setCurrentUser(user:UserData){
         
-        console.log("top setCurrentUser");
+        //console.log("top setCurrentUser");
         //if(!this.userIsPresent){
             //this.currUser=user;
             localStorage.setItem('currentUser',JSON.stringify(user));
@@ -46,17 +46,16 @@ export class AuthService{
         //return JSON.parse(localStorage.getItem('currentUser') || this.currUser.toString());
     }
     setToken(token){
-        console.log("top setToken");
+        //console.log("top setToken");
         //if(!this.userIsPresent){
             //this.token=token;
             localStorage.setItem('refreshtoken',token);
         //}
     }
     clearCurrntUser(){
-        console.log("setting null in current user");
+        //console.log("setting null in current user");
         localStorage.removeItem('currentUser');
-        //this.user.next(null);
-        console.log("current user = ",JSON.parse(localStorage.getItem('currentUser')));
+        //console.log("current user = ",JSON.parse(localStorage.getItem('currentUser')));
     }
     clearToken(){
         localStorage.removeItem('refreshtoken');

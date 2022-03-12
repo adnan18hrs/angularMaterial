@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SignupData } from 'src/app/model/SignupData';
+//import { refreshing2 } from 'src/app/shared/refreshing2';
+import { TransferService } from 'src/app/shared/transfer.service';
 import { SignupService } from '../signup.service';
 
 @Component({
@@ -16,7 +19,7 @@ export class SignupComponent implements OnInit {
     {sign: "mod", name: "MOD"}
   ];
   selectedValue:string;
-  constructor(public signupservice:SignupService) { }
+  constructor(public signupservice:SignupService, public router:Router, public transferService:TransferService/*, public refresh2:refreshing2*/) { }
 
   public onSignup(dataUI:SignupData){
     //console.log("this.selectedValue = ",this.selectedValue);
@@ -26,45 +29,37 @@ export class SignupComponent implements OnInit {
     console.log("dataUI.roles = ",dataUI.roles.toString());
     if(dataUI.password==dataUI.repassword){
       console.log("username = ",dataUI.username);
-      console.log("password = ",dataUI.password);
       this.signupservice.trySignup(dataUI,this.headers).subscribe(
         (response:any)=>{
-          console.log("response is ",response);
+          console.log("RESPONSE is coming");
+          console.log("response['message'] = ",response['message']);
+          if(response['message']=="User registered successfully!"){
+            console.log("user saved inside mongoDB");
+            this.setUserDetails(response);
+            console.log("response is ",response);
+          }
+          else{
+            alert("not registered successfully");
+            
+          }
         }
       )
-      //this.router.navigate(["/login"]);
     }
     else{alert("password is not matching");}
+    //this.refresh2.refreshing();
+    //this.router.navigate(["/login"]);
   }
-  ngOnInit() {
+
+  setUserDetails(response){
+    
+    console.log("saving details inside localstorage");
+    localStorage.setItem('loggedIn', 'true');
+    console.log("JSON.stringify(response) = ",JSON.stringify(response));
+    localStorage.setItem('currentUser',JSON.stringify(response));
+    console.log("response['token'] = ",response['token']);
+    localStorage.setItem('refreshtoken',response['token']);
+    //this.transferService.refreshNgOnit();
   }
+  
+  ngOnInit() {}
 }
-
-/*
-export class Role
-{
-  role: string, 
-  empoloyeeID: number
-}
-
-export class FormComponent implements OnInit {
- name: string;
- empoloyeeID : number;
- empList: Array<string> = [];
- constructor() {
-
- }
-
- ngOnInit() {
- }
- onEmpCreate(){
-   //console.log(this.name,this.empoloyeeID);
-   let customObj = new Custom();
-   customObj.name = "something";
-   customObj.employeeId = 12; 
-   this.empList.push(customObj);
-   this.name ="";
-   this.empoloyeeID = 0; 
- }
-}
-*/

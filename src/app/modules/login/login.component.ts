@@ -44,8 +44,8 @@ export class LoginComponent implements OnInit {
       console.log("password = ",dataUI.password);
       this.loginService.tryLogging(dataUI,this.headers).subscribe(
         (response:any)=>{
-          console.log("response message is ",response['message']);
           if(response['message']=='SUCCESSFULLY LOGGED IN'){
+            console.log("response message is ",response['message']);
             this.setUserDetails(response);
           }
           else{
@@ -59,9 +59,7 @@ export class LoginComponent implements OnInit {
   }
 
   setUserDetails(response){
-    
     console.log("top setUserDetails");
-
 
     this.currentUser=new UserData();
     this.appService=new AppService();
@@ -76,7 +74,6 @@ export class LoginComponent implements OnInit {
 
     this.appService.setHttpHeader(this.currentUser.token);
     this.appService.setCurrentUser(this.currentUser);
-
     
     console.log("bottom setUserDetails");
     
@@ -97,6 +94,13 @@ export class LoginComponent implements OnInit {
     console.log("bottom ngOnInit");
   }
 
-  
+  refreshLoggedIn(){
+    if(localStorage.getItem("loggedIn")=="true"){
+      this.userIsPresent = true;
+    }
+    else{
+      this.userIsPresent = false;
+    }
+  }
 
 }

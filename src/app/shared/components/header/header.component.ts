@@ -36,6 +36,7 @@ export class HeaderComponent implements OnInit {
     console.log("logging out");
     this.authService = new AuthService();
     this.authService.clearCurrntUser();
+    this.authService.clearCurrntUser();
     this.authService.clearLoggedIn();
     this.authService.clearLoggedIn();
     this.router.navigate(["/login"]);
@@ -74,6 +75,11 @@ export class HeaderComponent implements OnInit {
       );
     }, 300);
   }
+
+  /*refreshing(){
+    console.log("inside header.component.ts to refresh userIsPresent");
+    this.userIsPresent = localStorage.getItem('isLoggedIn');
+  }*/
 
 }
 
