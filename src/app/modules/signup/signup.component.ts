@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SignupData } from 'src/app/model/SignupData';
-//import { refreshing2 } from 'src/app/shared/refreshing2';
 import { TransferService } from 'src/app/shared/transfer.service';
 import { SignupService } from '../signup.service';
 
@@ -19,7 +18,7 @@ export class SignupComponent implements OnInit {
     {sign: "mod", name: "MOD"}
   ];
   selectedValue:string;
-  constructor(public signupservice:SignupService, public router:Router, public transferService:TransferService/*, public refresh2:refreshing2*/) { }
+  constructor(public signupservice:SignupService, public router:Router) { }
 
   public onSignup(dataUI:SignupData){
     //console.log("this.selectedValue = ",this.selectedValue);
@@ -46,8 +45,6 @@ export class SignupComponent implements OnInit {
       )
     }
     else{alert("password is not matching");}
-    //this.refresh2.refreshing();
-    //this.router.navigate(["/login"]);
   }
 
   setUserDetails(response){
@@ -58,7 +55,7 @@ export class SignupComponent implements OnInit {
     localStorage.setItem('currentUser',JSON.stringify(response));
     console.log("response['token'] = ",response['token']);
     localStorage.setItem('refreshtoken',response['token']);
-    //this.transferService.refreshNgOnit();
+    this.router.navigate(["/login"]);
   }
   
   ngOnInit() {}

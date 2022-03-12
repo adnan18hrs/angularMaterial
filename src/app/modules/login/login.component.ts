@@ -93,14 +93,4 @@ export class LoginComponent implements OnInit {
     this.headers = this.appService.getHttpHeader(); //this.myList.filter=""; this.myList.data.length=0;
     console.log("bottom ngOnInit");
   }
-
-  refreshLoggedIn(){
-    if(localStorage.getItem("loggedIn")=="true"){
-      this.userIsPresent = true;
-    }
-    else{
-      this.userIsPresent = false;
-    }
-  }
-
 }
