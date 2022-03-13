@@ -1,5 +1,5 @@
 <div class="container">
-    <p>Home works!</p>
+    
     <!--
     <div class="d-flex justify-content-center">
         <form  #userformBooking="ngForm" (ngSubmit)="onLogin(userformBooking.value)">
@@ -14,10 +14,11 @@
     </div>
 -->
 </div>
-<div *ngFor="let content of data">
-    <app-cards></app-cards>
-    <div *ngFor="let category of data">
-      <span>{{category}}</span>
+<p>Home component works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-sm-6 card" *ngFor="let obj of data" id="cardBackground">
+            <app-cards title="Iphone 12 pro max" price="5000" stock="15" sno="{{obj}}"></app-cards>
+        </div>
     </div>
 </div>
-

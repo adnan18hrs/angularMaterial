@@ -10,7 +10,7 @@ export class HomeComponent implements OnInit {
   headers:any; 
   public popup:boolean;
   constructor(private homeService:HomeService) { }
-  data: number[] = [1, 2, 3];
+  data: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   
   validateEmail(email:any) {
     return true;
