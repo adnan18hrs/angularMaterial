@@ -17,8 +17,8 @@
 <p>Home component works!</p>
 <div class="container">
     <div class="row">
-        <div class="col-lg-3 col-sm-6 card" *ngFor="let obj of data" id="cardBackground">
-            <app-cards title="Iphone 12 pro max" price="5000" stock="15" sno="{{obj}}"></app-cards>
+        <div class="col-lg-3 col-sm-6 card" *ngFor="let obj of products" id="cardBackground">
+            <app-cards title="{{obj.name}}" price="{{obj.price}}" stock="{{obj.countInStock}}"></app-cards>
         </div>
     </div>
 </div>
