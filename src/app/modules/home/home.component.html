@@ -16,7 +16,7 @@
 <p>Home component works!</p>
 <div class="container">
     <div class="row">
-        <div class="col-lg-3 col-sm-6 card" *ngFor="let obj of products" id="cardBackground" style="height: 600px;margin-bottom: 10px;margin-top: 10px;">
+        <div class="col-lg-3 col-sm-6 card" *ngFor="let obj of products" id="cardBackground" style="margin-bottom: 10px;margin-top: 10px;padding: 2px;">
             <app-cards [product]="obj"></app-cards>
         </div>
     </div>
