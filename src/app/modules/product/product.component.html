@@ -1,19 +1,57 @@
 
 <div class="container">
-    <div class="col-4">
-        <img src="{{product.image}}" class="w-100 border-bottom" alt="Sample Image"  style="height: 220px;"  style="border: 2px solid red;">
-        <div class="card-body row" style="border: 2px solid yellow;min-height: 230px;">
-            <h5 class="card-title text-muted"><b>{{product.name}}</b></h5>
-            <p class="card-text">{{product.description}}</p>
+    <div class="row m-2">
+        <div>
+            <button class="btn btn-primary">
+                <a class=" text-muted" style="text-decoration: none;color:black" routerLink="/"><b style="color: white;">Go back</b></a>
+            </button>
         </div>
-        <div class="card-body row" style="border: 2px solid black;">
-            <div class="col-6">
-            <h6><b>Rs.{{product.price}}</b></h6>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-5 p-2 col-sm-12">
+            <img src="{{product.image}}" class="w-100 border-bottom" alt="Sample Image"  style="height: 220px;"  style="border: 2px solid red;">
+        </div>
+        <div class="col-lg-3 p-2 col-sm-12" style="border: 2px solid yellow;min-height: 230px;">
+            <div class="row align-items-center">
+                <h5 class="card-title text-muted"><b>{{product.name}}</b></h5><hr>
             </div>
-            <div class="col-6">
-            <h6>InStock: {{product.countInStock}} </h6>
+            <div class="row align-items-center">
+                <h6><b>Rs.{{product.price}}</b></h6><hr>
+            </div>
+            <div class="row align-items-center">
+                <p class="card-text">{{product.description}}</p>
             </div>
         </div>
+        <div class="col-lg-3 p-3 col-sm-12" style="border: 2px solid black;">
+            <div class="row">
+                <div class="col-5">Price</div>
+                <div class="col-5">{{product.price}}</div>
+            </div><hr>
+            <div class="row">
+                <div class="col-5">Status</div>
+                <div class="col-5">{{product.countInStock}}</div>
+            </div><hr>
+            <div class="row">
+                <div class="col-5">Qty</div>
+                <div class="col-5">
+                    <form>
+                        <div class="form-group">
+                          <select class="form-control" id="sel1" name="sellist1">
+                            <option *ngFor="let player of counter(); let x=index">
+                                {{x+1}}
+                            </option>
+                          </select>
+                        </div>
+                      </form>
+                </div>
+            </div><hr>
+            <div class="row p-2">
+                <button class="btn btn-primary">
+                    <a class=" text-muted" style="text-decoration: none;color:black" routerLink="/"><b style="color: white;">Add to cart</b></a>
+                </button>
+            </div><hr>
+        </div>
+        <!--
         <div class="card-body row" style="border: 2px solid green;">
             <div class="col-6">
                 <a href="#" class="btn btn-primary" style="display:block">Wishlist</a>
@@ -21,6 +59,8 @@
             <div class="col-6">
                 <a href="#" class="btn btn-primary" style="display:block">Add to cart</a>	
             </div>
-        </div>
+        </div>-->
     </div>
 </div>
+
+

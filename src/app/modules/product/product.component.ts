@@ -7,10 +7,13 @@ import { Product } from 'src/app/model/product';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-
+  
   public product:Product;
   constructor() { }
-
+  
+  counter() {
+    return new Array(this.product.countInStock);
+  }
   ngOnInit() {
     this.product = JSON.parse(localStorage.getItem('currentProduct'));
   }
