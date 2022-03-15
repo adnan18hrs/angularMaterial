@@ -16,6 +16,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SignupComponent } from 'src/app/modules/signup/signup.component';
+import { ProductComponent } from 'src/app/modules/product/product.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SignupComponent } from 'src/app/modules/signup/signup.component';
     DashboardComponent,
     PostsComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    ProductComponent
   ],
   imports: [
     CommonModule,
@@ -38,16 +40,13 @@ import { SignupComponent } from 'src/app/modules/signup/signup.component';
     AllMaterialFolderModule,
     FormsModule,
     BrowserModule,
-    //AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
     HttpClientModule
 
   ],
   providers: [
-    DashboardService,
-    
-    SignupComponent
+    DashboardService
   ]
 })
 export class DefaultModule { }

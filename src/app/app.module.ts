@@ -11,6 +11,7 @@ import { SharedModule } from './shared/shared.module';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './modules/signup/signup.component';
+import { ProductComponent } from './modules/product/product.component';
 
 @NgModule({
   declarations: [

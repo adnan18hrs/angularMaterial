@@ -1,24 +1,9 @@
+
 <div class="container">
-    <!--
-    <div class="d-flex justify-content-center">
-        <form  #userformBooking="ngForm" (ngSubmit)="onLogin(userformBooking.value)">
-            <div class="mb-3">
-                <input ngModel placeholder="Enter Username" name="username" required class="iInput" type="text" class="form-control">
-            </div>
-            <div class="mb-3">
-                <input ngModel placeholder="Enter password" name="password" required class="iInput" type="password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-primary"><b>Login</b></button>
-        </form>
-    </div>
--->
-</div>
-<p>Home component works!</p>
-<div class="container">
+    <p class="text-muted"><b>Home component!</b></p>
     <div class="row">
-        <div class="col-lg-3 col-sm-6 card" *ngFor="let obj of products" id="cardBackground" style="padding: 2px;">
+        <div class="col-lg-3 col-md-4 col-sm-6 card" *ngFor="let obj of products" id="cardBackground" style="padding: 2px;" (click)="onProduct($event, obj)" routerLink="/product/{{obj._id}}">
             <app-cards [product]="obj"></app-cards>
         </div>
     </div>
 </div>
-

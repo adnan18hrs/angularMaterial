@@ -3,6 +3,7 @@ import { LoggingData } from 'src/app/model/loggingData';
 import { HomeService } from 'src/app/modules/home.service';
 import { HttpClient } from "@angular/common/http";
 import { Product } from 'src/app/model/product';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -15,14 +16,14 @@ export class HomeComponent implements OnInit {
   products: Product[]=[];
   public oneProduct:Product;
   public popup:boolean;
-  constructor(private homeService:HomeService,private httpClient: HttpClient) { }
+  constructor(private homeService:HomeService,private httpClient: HttpClient, private router:Router) { }
   data: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   //students: Student[] = studentsData; 
   
   validateEmail(email:any) {
     return true;
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
+    //const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    //return re.test(String(email).toLowerCase());
   }
   
   public onLogin(dataUI:LoggingData){
@@ -48,9 +49,19 @@ export class HomeComponent implements OnInit {
     })
     this.headers = this.homeService.getHttpHeader(); //this.myList.filter=""; this.myList.data.length=0;
   }
+
+  onProduct(event, obj:Product){
+    localStorage.setItem('currentProduct',JSON.stringify(obj));
+    console.log("id of product is = ",obj.name);
+    let x:any;
+    x=obj._id;
+    //this.router.navigate(["/product/x"]);
+
+  }
   
   converter(p:any){
     this.oneProduct = new Product();
+    this.oneProduct._id = p['_id'];
     this.oneProduct.name = p['name'];
     this.oneProduct.image = p['image'];
     this.oneProduct.description = p['description'];

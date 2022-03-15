@@ -1,7 +1,5 @@
-<p>user is {{userIsPresent}}</p>
+<br><br><br>
 <div class="container">
-    <p>Login works!</p>
-    
     <div *ngIf="!userIsPresent" class="d-flex justify-content-center">
         <form  #userformBooking="ngForm" (ngSubmit)="onLogin(userformBooking.value)">
             <div class="mb-3">
