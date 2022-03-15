@@ -1,22 +1,24 @@
 
-    <img src="{{product.image}}" class="w-100 border-bottom" alt="Sample Image"  style="height: 220px;">
-    <div class="card-body">
-        <h5 class="card-title">{{product.name}}</h5>
+<div>
+    <img src="{{product.image}}" class="w-100 border-bottom" alt="Sample Image"  style="height: 220px;"  style="border: 2px solid red;">
+    <div class="card-body row" style="border: 2px solid yellow;min-height: 230px;">
+        <h5 class="card-title text-muted"><b>{{product.name}}</b></h5>
         <p class="card-text">{{product.description}}</p>
     </div>
-    <div class="card-body row">
+    <div class="card-body row" style="border: 2px solid black;bottom: 0px;">
         <div class="col-6">
-        <h6>Price: Rs.{{product.price}}</h6>
+        <h6><b>Rs.{{product.price}}</b></h6>
         </div>
         <div class="col-6">
         <h6>InStock: {{product.countInStock}} </h6>
         </div>
     </div>
-    <div class="card-body row">
-        <div class="col-6">
-            <a href="#" class="btn btn-primary" style="display:block">Add to cart</a>	
-        </div>
+    <div class="card-body row" style="border: 2px solid green;">
         <div class="col-6">
             <a href="#" class="btn btn-primary" style="display:block">Wishlist</a>
         </div>
+        <div class="col-6">
+            <a href="#" class="btn btn-primary" style="display:block">Add to cart</a>	
+        </div>
     </div>
+</div>
