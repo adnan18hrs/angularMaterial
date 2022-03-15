@@ -30,7 +30,7 @@
           </button>
           <mat-menu #menu1="matMenu">
             <button mat-menu-item routerLink="/login"><b>Login</b></button>
-            <button mat-menu-item (click)="logout()"><b>Sign up</b></button>
+            <button mat-menu-item routerLink="/signup"><b>Sign up</b></button>
           </mat-menu>
           <button class="btn btn-primary" type="submit" *ngIf="userIsPresent">
             <a *ngIf="userIsPresent" class="text-muted" style="text-decoration: none;" (click)="logout()"><b style="color: white;">Logout</b></a>
