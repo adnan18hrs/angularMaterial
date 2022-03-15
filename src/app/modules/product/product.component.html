@@ -23,33 +23,35 @@
             </div>
         </div>
         <div class="col-lg-3 p-3 col-sm-12" style="border: 2px solid black;">
-            <div class="row">
-                <div class="col-5">Price</div>
-                <div class="col-5">{{product.price}}</div>
-            </div><hr>
-            <div class="row">
-                <div class="col-5">Status</div>
-                <div class="col-5">{{product.countInStock}}</div>
-            </div><hr>
-            <div class="row">
-                <div class="col-5">Qty</div>
-                <div class="col-5">
-                    <form>
-                        <div class="form-group">
-                          <select class="form-control" id="sel1" name="sellist1">
-                            <option *ngFor="let player of counter(); let x=index">
-                                {{x+1}}
-                            </option>
-                          </select>
-                        </div>
-                      </form>
-                </div>
-            </div><hr>
-            <div class="row p-2">
-                <button class="btn btn-primary">
-                    <a class=" text-muted" style="text-decoration: none;color:black" routerLink="/"><b style="color: white;">Add to cart</b></a>
-                </button>
-            </div><hr>
+            <div class="container" style="border: 1px solid black;">
+                <div class="row">
+                    <div class="col-5">Price</div>
+                    <div class="col-5">{{product.price}}</div>
+                </div><hr>
+                <div class="row">
+                    <div class="col-5">Status</div>
+                    <div class="col-5">{{product.countInStock}}</div>
+                </div><hr>
+                <div class="row">
+                    <div class="col-5">Qty</div>
+                    <div class="col-5">
+                        <form>
+                            <div class="form-group">
+                            <select class="form-control" id="sel1" name="sellist1">
+                                <option *ngFor="let player of counter(); let x=index">
+                                    {{x+1}}
+                                </option>
+                            </select>
+                            </div>
+                        </form>
+                    </div>
+                </div><hr>
+                <div class="row p-2">
+                    <button class="btn btn-primary">
+                        <a class=" text-muted" style="text-decoration: none;color:black" routerLink="/"><b style="color: white;">Add to cart</b></a>
+                    </button>
+                </div><hr>
+            </div>
         </div>
         <!--
         <div class="card-body row" style="border: 2px solid green;">
