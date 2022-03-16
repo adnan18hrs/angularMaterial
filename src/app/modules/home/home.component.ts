@@ -12,6 +12,16 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
+
+  //storing array in localStorage
+  public cart:Product[]=[];
+  //store colors
+  //var storedColors = JSON.parse(localStorage.getItem("my_colors")); //get them back
+
+
+
+
+
   headers:any;
   products: Product[]=[];
   public oneProduct:Product;
@@ -52,9 +62,6 @@ export class HomeComponent implements OnInit {
 
   onProduct(event, obj:Product){
     localStorage.setItem('currentProduct',JSON.stringify(obj));
-    console.log("id of product is = ",obj.name);
-    let x:any;
-    x=obj._id;
     //this.router.navigate(["/product/x"]);
 
   }

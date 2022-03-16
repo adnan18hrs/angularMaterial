@@ -5,7 +5,6 @@ import { DashboardComponent } from 'src/app/modules/dashboard/dashboard.componen
 import { RouterModule } from '@angular/router';
 import { PostsComponent } from 'src/app/modules/posts/posts.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { MatSidenavModule, MatDividerModule, MatCardModule, MatPaginatorModule, MatTableModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DashboardService } from 'src/app/modules/dashboard.service';
 import { LoginComponent } from 'src/app/modules/login/login.component';
@@ -17,6 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SignupComponent } from 'src/app/modules/signup/signup.component';
 import { ProductComponent } from 'src/app/modules/product/product.component';
+import { CartComponent } from 'src/app/modules/cart/cart.component';
+import { OrderComponent } from 'src/app/modules/order/order.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,9 @@ import { ProductComponent } from 'src/app/modules/product/product.component';
     PostsComponent,
     LoginComponent,
     SignupComponent,
-    ProductComponent
+    ProductComponent,
+    CartComponent,
+    OrderComponent
   ],
   imports: [
     CommonModule,

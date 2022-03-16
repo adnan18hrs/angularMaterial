@@ -9,4 +9,5 @@ export class Product{
     countInStock:number;
     rating:number;
     numReviews:number;
+    inCart:number;
 }

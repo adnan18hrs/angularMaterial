@@ -14,12 +14,11 @@ import { SignupComponent } from './modules/signup/signup.component';
 import { ProductComponent } from './modules/product/product.component';
 import { CartComponent } from './modules/cart/cart.component';
 import { WishlistComponent } from './modules/wishlist/wishlist.component';
+import { OrderComponent } from './modules/order/order.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    CartComponent,
-    WishlistComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,

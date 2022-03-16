@@ -13,7 +13,7 @@ export class CardsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log("product inside card.ts class = ",this.product.image);
+    //console.log("product inside card.ts class = ",this.product.image);
   }
 
 }
