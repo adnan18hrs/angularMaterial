@@ -1,3 +1,32 @@
 <div class="container">
-    <h3>SHOPPING CART</h3>
+    <div class="row">
+        <div class="col-lg-8  col-sm-12">
+            <div class="row">
+                <p class="row text-muted"><b><h3>SHOPPING CART</h3></b></p>
+            </div>
+            <div class="row" style="background-color: red;border: 1px solid black;display: flex;align-items: center;" *ngFor="let product of cartItems">
+                <div class="col-lg-3 col-sm-12" style="background-color: aqua;">
+                    <img src="{{product.image}}" class="w-100 border-bottom" alt="Sample Image"   style="border: 2px solid red;">
+                </div>
+                <div class="col-lg-4 col-sm-12" style="background-color: green; vertical-align: middle;">{{product.name}}</div>
+                <div class="col-lg-2 col-sm-12" style="background-color: yellow;">Rs.{{product.price}}</div>
+                <div class="col-lg-2 col-sm-12" style="background-color: red;">
+                    <form>
+                        <div class="form-group">
+                        <select [disabled]="!product.countInStock" class="form-control" id="sel1" name="sellist1">
+                            <option *ngFor="let player of counter(product.countInStock); let x=index">
+                                {{x+1}}
+                            </option>
+                        </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-1 col-sm-12" style="background-color: blue;">Delete</div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-12">
+            <h3>Checkout</h3>
+        </div>
+    </div>
 </div>
+<!--  "-->
