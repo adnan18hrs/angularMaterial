@@ -12,7 +12,8 @@ export class CartComponent implements OnInit {
   public cartItems:Product[]=[];
   public cartTemp1:Product[]=[];
   public cartTemp2:Product[]=[];
-  public cartSize:number;
+  public cartSize:boolean;
+  public flag:boolean;
   constructor() { }
 
   ngOnInit() {
@@ -20,6 +21,7 @@ export class CartComponent implements OnInit {
       console.log("cart is not empty...........");
       this.cartItems = JSON.parse(localStorage.getItem("currentCart"));
       console.log("cartItems = ",this.cartItems);
+      this.checkCartSize();
     }
   }
   counter(x:number) {
@@ -27,13 +29,29 @@ export class CartComponent implements OnInit {
   }
   onDelete(event, obj:Product){
     console.log("hello");
-    this.cartTemp2=[];
+    this.cartItems=[];
     this.cartTemp1 = JSON.parse(localStorage.getItem("currentCart"));
     this.cartTemp1.forEach((element,index)=>{
       if(element._id!=obj._id){
-        this.cartTemp2.push(element);
+        this.cartItems.push(element);
       }
     });
-    localStorage.setItem("currentCart", JSON.stringify(this.cartTemp2));
+    localStorage.setItem("currentCart", JSON.stringify(this.cartItems));
+    this.checkCartSize();
+  }
+  
+  checkCartSize(){
+    this.flag=false;
+    JSON.parse(localStorage.getItem("currentCart")).forEach((element,index)=>{
+      if(element!=null){
+        this.flag=true;
+      }
+    });
+    if(this.flag){
+      this.cartSize=true;
+    }
+    else{
+      this.cartSize=false;
+    }
   }
 }

@@ -1,6 +1,7 @@
 <div class="container">
     <div class="row">
-        <div class="col-lg-8  col-sm-12">
+        <p class="row text-muted" *ngIf="!cartSize"><b><h3>Cart is empty</h3></b></p>
+        <div class="col-lg-8  col-sm-12" *ngIf="cartSize">
             <div class="row">
                 <p class="row text-muted"><b><h3>SHOPPING CART</h3></b></p>
                 
@@ -25,7 +26,7 @@
                 <div class="col-lg-1 col-sm-6" style="align-items: center;"><button style="background-color: white;border: none;"><span class="material-icons" style="color: black;" (click)="onDelete($event,product)">delete</span></button></div><hr>
             </div>
         </div>
-        <div class="col-lg-4 col-sm-12 p-5" style="border: 1px solid black;">
+        <div class="col-lg-4 col-sm-12 p-5" style="border: 1px solid black;" *ngIf="cartSize">
             <div class="row text-muted"><h4>Total Items()</h4></div>
             <div class="row"><h6>Rs.9999999</h6></div><hr>
             <div class="row"><a class="btn btn-primary" style="display:block">PROCEED TO CHECKOUT</a></div><hr>
