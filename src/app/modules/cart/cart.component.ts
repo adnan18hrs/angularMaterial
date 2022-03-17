@@ -54,4 +54,8 @@ export class CartComponent implements OnInit {
       this.cartSize=false;
     }
   }
+  getCartSize(){
+    this.checkCartSize();
+    return this.cartSize;
+  }
 }
