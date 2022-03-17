@@ -56,7 +56,7 @@ export class ProductComponent implements OnInit {
 
 
   checkCartSize(){
-    if(JSON.parse(localStorage.getItem("currentCart")).length>0){
+    if(JSON.parse(localStorage.getItem("currentCart"))!=null&&JSON.parse(localStorage.getItem("currentCart")).length>0){
       this.cartSize=true;
       return true;
     }
