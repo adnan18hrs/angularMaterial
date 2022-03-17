@@ -31,6 +31,7 @@ export class CartComponent implements OnInit {
     console.log("hello");
     this.cartItems=[];
     this.cartTemp1 = JSON.parse(localStorage.getItem("currentCart"));
+    //console.log("size of cart is = ",this.cartTemp1.length);
     this.cartTemp1.forEach((element,index)=>{
       if(element._id!=obj._id){
         this.cartItems.push(element);
@@ -39,23 +40,11 @@ export class CartComponent implements OnInit {
     localStorage.setItem("currentCart", JSON.stringify(this.cartItems));
     this.checkCartSize();
   }
-  
   checkCartSize(){
-    this.flag=false;
-    JSON.parse(localStorage.getItem("currentCart")).forEach((element,index)=>{
-      if(element!=null){
-        this.flag=true;
-      }
-    });
-    if(this.flag){
+    if(JSON.parse(localStorage.getItem("currentCart")).length>0){
       this.cartSize=true;
     }
-    else{
-      this.cartSize=false;
-    }
+    else{this.cartSize=false;}
   }
-  getCartSize(){
-    this.checkCartSize();
-    return this.cartSize;
-  }
+  
 }

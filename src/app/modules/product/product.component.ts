@@ -26,8 +26,7 @@ export class ProductComponent implements OnInit {
   
   addToCart(event, obj:Product){
     //localStorage.removeItem("currentCart");
-    this.cartSize=this.checkCartSize();
-    if(this.cartSize){
+    if(this.checkCartSize()){
       console.log("cart is not empty");
       
       this.cart=[];
@@ -57,19 +56,11 @@ export class ProductComponent implements OnInit {
 
 
   checkCartSize(){
-    this.flag=false;
-    JSON.parse(localStorage.getItem("currentCart")).forEach((element,index)=>{
-      if(element!=null){
-        this.flag=true;
-      }
-    });
-    if(this.flag){
+    if(JSON.parse(localStorage.getItem("currentCart")).length>0){
       this.cartSize=true;
+      return true;
     }
-    else{
-      this.cartSize=false;
-    }
-    return this.cartSize;
+    else{this.cartSize=false;return false;}
   }
 
 }
