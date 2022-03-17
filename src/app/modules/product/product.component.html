@@ -52,7 +52,7 @@
                     </div>
                 </div><hr>
                 <div class="row p-2">
-                    <button class="btn btn-primary" [disabled]="!product.countInStock" routerLink="/cart" (click)="onCart($event, product)">
+                    <button class="btn btn-primary" [disabled]="!product.countInStock" routerLink="/cart" (click)="addToCart($event, product)">
                         <a class=" text-muted" style="text-decoration: none;color:black"><b style="color: white;">Add to cart</b></a>
                     </button>
                 </div><hr>

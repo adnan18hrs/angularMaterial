@@ -20,7 +20,7 @@ export class ProductComponent implements OnInit {
     this.product = JSON.parse(localStorage.getItem('currentProduct'));
   }
   
-  onCart(event, obj:Product){
+  addToCart(event, obj:Product){
     //localStorage.removeItem("currentCart");
     if(JSON.parse(localStorage.getItem("currentCart"))!=null){
       console.log("cart is not empty");

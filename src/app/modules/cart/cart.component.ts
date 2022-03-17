@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { stringify } from 'querystring';
 import { Product } from 'src/app/model/product';
 
 @Component({
@@ -9,6 +10,9 @@ import { Product } from 'src/app/model/product';
 export class CartComponent implements OnInit {
 
   public cartItems:Product[]=[];
+  public cartTemp1:Product[]=[];
+  public cartTemp2:Product[]=[];
+  public cartSize:number;
   constructor() { }
 
   ngOnInit() {
@@ -20,5 +24,16 @@ export class CartComponent implements OnInit {
   }
   counter(x:number) {
     return new Array(x);
+  }
+  onDelete(event, obj:Product){
+    console.log("hello");
+    this.cartTemp2=[];
+    this.cartTemp1 = JSON.parse(localStorage.getItem("currentCart"));
+    this.cartTemp1.forEach((element,index)=>{
+      if(element._id!=obj._id){
+        this.cartTemp2.push(element);
+      }
+    });
+    localStorage.setItem("currentCart", JSON.stringify(this.cartTemp2));
   }
 }

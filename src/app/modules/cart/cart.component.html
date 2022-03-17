@@ -3,29 +3,32 @@
         <div class="col-lg-8  col-sm-12">
             <div class="row">
                 <p class="row text-muted"><b><h3>SHOPPING CART</h3></b></p>
+                
             </div>
-            <div class="row" style="background-color: red;border: 1px solid black;display: flex;align-items: center;" *ngFor="let product of cartItems">
-                <div class="col-lg-3 col-sm-12" style="background-color: aqua;">
-                    <img src="{{product.image}}" class="w-100 border-bottom" alt="Sample Image"   style="border: 2px solid red;">
+            <div class="row" style="align-items: center;" *ngFor="let product of cartItems">
+                <div class="col-lg-3 col-sm-12">
+                    <img src="{{product.image}}" class="w-100 border-bottom" alt="Sample Image">
                 </div>
-                <div class="col-lg-4 col-sm-12" style="background-color: green; vertical-align: middle;">{{product.name}}</div>
-                <div class="col-lg-2 col-sm-12" style="background-color: yellow;">Rs.{{product.price}}</div>
-                <div class="col-lg-2 col-sm-12" style="background-color: red;">
+                <div class="col-lg-4 col-sm-12 text-muted"><b>{{product.name}}</b></div>
+                <div class="col-lg-2 col-sm-12">Rs.{{product.price}}</div>
+                <div class="col-lg-2 col-sm-6">
                     <form>
                         <div class="form-group">
-                        <select [disabled]="!product.countInStock" class="form-control" id="sel1" name="sellist1">
-                            <option *ngFor="let player of counter(product.countInStock); let x=index">
-                                {{x+1}}
-                            </option>
-                        </select>
+                            <select [disabled]="!product.countInStock" class="form-control" id="sel1" name="sellist1">
+                                <option *ngFor="let player of counter(product.countInStock); let x=index">
+                                    {{x+1}}
+                                </option>
+                            </select>
                         </div>
                     </form>
                 </div>
-                <div class="col-lg-1 col-sm-12" style="background-color: blue;">Delete</div>
+                <div class="col-lg-1 col-sm-6" style="align-items: center;"><button style="background-color: white;border: none;"><span class="material-icons" style="color: black;" (click)="onDelete($event,product)">delete</span></button></div><hr>
             </div>
         </div>
-        <div class="col-lg-4 col-sm-12">
-            <h3>Checkout</h3>
+        <div class="col-lg-4 col-sm-12 p-5" style="border: 1px solid black;">
+            <div class="row text-muted"><h4>Total Items()</h4></div>
+            <div class="row"><h6>Rs.9999999</h6></div><hr>
+            <div class="row"><a class="btn btn-primary" style="display:block">PROCEED TO CHECKOUT</a></div><hr>
         </div>
     </div>
 </div>

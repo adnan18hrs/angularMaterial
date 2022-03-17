@@ -63,7 +63,6 @@ export class HomeComponent implements OnInit {
   onProduct(event, obj:Product){
     localStorage.setItem('currentProduct',JSON.stringify(obj));
     //this.router.navigate(["/product/x"]);
-
   }
   
   converter(p:any){
