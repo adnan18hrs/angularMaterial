@@ -11,12 +11,22 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { AllMaterialFolderModule } from 'src/app/allMaterialFolder/material.module';
+import { rootReducer } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from 'src/environments/environment';
+import { MatCardModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ApiService } from './service/app.service';
+import { HttpService } from './service/http.service';
+import { YoutubeRepository } from './service/youtube-repository';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    FlexLayoutModule,
+    MatCardModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     DefaultModule,
@@ -27,11 +37,14 @@ import { AllMaterialFolderModule } from 'src/app/allMaterialFolder/material.modu
     SharedModule,
     DefaultModule,
     HttpClientModule,
-    StoreModule.forRoot({},{}),
-    BrowserModule
+    BrowserModule,
+    ReactiveFormsModule,
+    FormsModule,
+    StoreModule.forRoot(rootReducer),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
     
   ],
-  providers: [HeaderComponent],
+  providers: [HeaderComponent, ApiService, HttpService, YoutubeRepository],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
