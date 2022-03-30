@@ -10,10 +10,7 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from './shared/shared.module';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
-import { SignupComponent } from './modules/signup/signup.component';
-import { ProductComponent } from './modules/product/product.component';
-import { CartComponent } from './modules/cart/cart.component';
-import { OrderComponent } from './modules/order/order.component';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -30,7 +27,9 @@ import { OrderComponent } from './modules/order/order.component';
     ReactiveFormsModule,
     SharedModule,
     DefaultModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({},{})
+    
   ],
   providers: [HeaderComponent],
   bootstrap: [AppComponent]
