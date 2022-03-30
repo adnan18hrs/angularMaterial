@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AllMaterialFolderModule } from 'src/app/allMaterialFolder/material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,13 +10,13 @@ import { SharedModule } from './shared/shared.module';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
+import { AllMaterialFolderModule } from 'src/app/allMaterialFolder/material.module';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     DefaultModule,
@@ -28,7 +27,8 @@ import { StoreModule } from '@ngrx/store';
     SharedModule,
     DefaultModule,
     HttpClientModule,
-    StoreModule.forRoot({},{})
+    StoreModule.forRoot({},{}),
+    BrowserModule
     
   ],
   providers: [HeaderComponent],
