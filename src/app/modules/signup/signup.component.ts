@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { UserListSuccessAction } from 'src/app/actions/user-action';
 import { SignupData } from 'src/app/model/SignupData';
+import { UserData } from 'src/app/model/userData';
+import { RootReducerState } from 'src/app/reducers';
 import { TransferService } from 'src/app/shared/transfer.service';
 import { SignupService } from '../signup.service';
 
@@ -18,33 +22,42 @@ export class SignupComponent implements OnInit {
     {sign: "mod", name: "MOD"}
   ];
   selectedValue:string;
-  constructor(public signupservice:SignupService, public router:Router) { }
+  public dataFromSignup:UserData;
+  constructor(public signupservice:SignupService, public router:Router, private store:Store<RootReducerState>) { }
 
   public onSignup(dataUI:SignupData){
     //console.log("this.selectedValue = ",this.selectedValue);
     //console.log("dataUI.username = ",dataUI.username);
-    dataUI.roles = [dataUI.role];
+    //dataUI.roles = [dataUI.role];
     dataUI.email = dataUI.username;
-    console.log("dataUI.roles = ",dataUI.roles.toString());
+    //console.log("dataUI.roles = ",dataUI.roles.toString());
     if(dataUI.password==dataUI.repassword){
       console.log("username = ",dataUI.username);
       this.signupservice.trySignup(dataUI,this.headers).subscribe(
         (response:any)=>{
-          console.log("RESPONSE is coming");
           console.log("response['message'] = ",response['message']);
           if(response['message']=="User registered successfully!"){
-            console.log("user saved inside mongoDB");
             this.setUserDetails(response);
             console.log("response is ",response);
+            this.assignUserInReducer(response);
           }
           else{
             alert("not registered successfully");
-            
           }
         }
       )
     }
     else{alert("password is not matching");}
+  }
+  assignUserInReducer(response:any){
+     //const data= response;
+     this.dataFromSignup = new UserData();
+     this.dataFromSignup.email = response['email'];
+     this.dataFromSignup.token = response['token'];
+     this.dataFromSignup.username = response['username'];
+     const data=this.dataFromSignup;
+     console.log("data[0].username = ", this.dataFromSignup.email);
+     this.store.dispatch(new UserListSuccessAction({data}));
   }
 
   setUserDetails(response){
