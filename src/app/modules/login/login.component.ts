@@ -37,6 +37,23 @@ export class LoginComponent implements OnInit {
     this.currentUser=this.authService.getCurrentUser();
     console.log("bottom login constructor");
   }
+  ngOnInit() {
+    
+    const logout$ = this.store.select(getUserLogout);
+    logout$.subscribe(data=>{
+      if(data==true){
+        this.userIsPresent = false;
+      }
+    });
+    this.userIsPresent=JSON.parse(localStorage.getItem('loggedIn'));
+    console.log("this.userIsPresent inside login ts file = ",JSON.parse(localStorage.getItem('loggedIn')));
+    console.log("top ngOnInit");
+    this.appService=new AppService();
+    this.headers = this.appService.getHttpHeader(); //this.myList.filter=""; this.myList.data.length=0;
+    console.log("bottom ngOnInit");
+    
+    
+  }
   validateEmail(email:any) {
     return true;
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -129,21 +146,5 @@ export class LoginComponent implements OnInit {
     console.log("data[0].username = ", data.username);
     this.store.dispatch(new UserListSuccessAction({data}));
     //this.transferService.refreshNgOnit();
-  }
-  
-
-  ngOnInit() {
-    
-    console.log("top ngOnInit");
-    this.appService=new AppService();
-    this.headers = this.appService.getHttpHeader(); //this.myList.filter=""; this.myList.data.length=0;
-    console.log("bottom ngOnInit");
-    
-    const logout$ = this.store.select(getUserLogout);
-    logout$.subscribe(data=>{
-      if(data==true){
-        this.userIsPresent = false;
-      }
-    });
   }
 }

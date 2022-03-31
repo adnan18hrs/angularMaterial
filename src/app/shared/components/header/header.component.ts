@@ -44,13 +44,6 @@ export class HeaderComponent implements OnInit {
         this.userIsPresent = data;
       }
     });
-    const logout$ = this.store.select(getUserLogout);
-    logout$.subscribe(data=>{
-      if(data==true){
-        this.userIsPresent = false;
-      }
-    });
-
   }
 
   logout(){
@@ -62,6 +55,15 @@ export class HeaderComponent implements OnInit {
     this.authService.clearLoggedIn();
     this.router.navigate(["/login"]);
     this.store.dispatch(new UserListLogoutAction());
+    const logout$ = this.store.select(getUserLogout);
+    logout$.subscribe(data=>{
+      if(data==true){
+        this.userIsPresent = false;
+      }
+    });
+    this.userIsPresent=JSON.parse(localStorage.getItem('loggedIn'));
+    console.log("this.userIsPresent = ",JSON.parse(localStorage.getItem('loggedIn')));
+    
     //this.loginService.refreshNgOnit();
     //this.userIsPresent = JSON.parse(localStorage.getItem('loggedIn'));
   }
