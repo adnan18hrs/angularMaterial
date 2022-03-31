@@ -1,23 +1,38 @@
 
 <div class="container"> 
-    <div class="d-flex justify-content-center">
-        <form #signupForm="ngForm" (ngSubmit)="onSignup(signupForm.value)">
-            <div class="mb-3">
-                <input ngModel placeholder="Enter email" name="username" required class="iInput" type="text" class="form-control">
+    <div class="justify-content-md-center row">
+        <div class="col-md-6 col-12">
+            <h1>Sign Up</h1>
+            <form #signupForm="ngForm" (ngSubmit)="onSignup(signupForm.value)">
+                <div class="form-group">
+                    <label class="form-label" for="name">Name</label>
+                    <input required="" placeholder="Enter name" type="name" id="name" class="form-control" value="">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="email">Email Address</label>
+                    <input required="" placeholder="Enter Email" type="email" id="email" class="form-control" value="">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="password">Password</label>
+                    <input required="" placeholder="Enter Password" type="password" id="password" class="form-control" value="">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="passwordConfirm">Confirm Password</label>
+                    <input required="" placeholder="Confirm Password" type="password" id="passwordConfirm" class="form-control" value="">
+                </div>
+                <button type="submit" class="btn btn-primary mt-2">Register</button>
+            </form>
+            <div class="py-3 row">
+                <div class="col">Have an Account? <a routerLink="/login">Sign In</a></div>
             </div>
-            <div class="mb-3">
-                <input ngModel placeholder="Enter password" name="password" required class="iInput" type="password" class="form-control">
-            </div>
-            <div class="mb-3">
-                <input ngModel placeholder="Re-enter password" name="repassword" required class="iInput" type="password" class="form-control">
-            </div>
-            <div class="mb-3">
-                <select  [(ngModel)]="selectedValue" class="form-select" aria-label="Default select example" name="role">
-                    <option selected>Select role</option>
-                    <option *ngFor="let rol of roles" [ngValue]="rol.sign" name="role">{{rol.name}}</option>
-                  </select>
-            </div>
-            <button class="btn btn-primary" routerLinkActive="list-item-active"><b>Submit</b></button>
-        </form>
+            <!--<div class="mb-3">
+                    <select  [(ngModel)]="selectedValue" class="form-select" aria-label="Default select example" name="role">
+                        <option selected>Select role</option>
+                        <option *ngFor="let rol of roles" [ngValue]="rol.sign" name="role">{{rol.name}}</option>
+                    </select>
+                </div>-->
+        </div>
     </div>
 </div>
+
+

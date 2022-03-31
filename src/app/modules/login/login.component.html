@@ -5,16 +5,24 @@
           <span class="visually-hidden">Loading...</span>
         </div>
     </div>
-    <div *ngIf="!userIsPresent && !loading" class="d-flex justify-content-center">
-        <form  #userformBooking="ngForm" (ngSubmit)="onLogin(userformBooking.value)">
-            <div class="mb-3">
-                <input ngModel placeholder="Enter Email Id" name="username" required class="iInput" type="text" class="form-control">
+    <div class="justify-content-md-center row">
+        <div class="col-md-6 col-12"  *ngIf="!userIsPresent && !loading">
+            <h1>Sign In</h1>
+            <form  #userformBooking="ngForm" (ngSubmit)="onLogin(userformBooking.value)">
+                <div class="form-group">
+                    <label class="form-label" for="email">Email Address</label>
+                    <input ngModel placeholder="Enter Email Id" name="username" required class="iInput" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="password">Password</label>
+                    <input ngModel placeholder="Enter password" name="password" required class="iInput" type="password" class="form-control">
+                </div>
+                <button class="btn btn-primary mt-2" routerLink="/login">Sign In</button>
+            </form>
+            <div class="py-3 row">
+                <div class="col">New Customer? <a routerLink="/signup">Register</a></div>
             </div>
-            <div class="mb-3">
-                <input ngModel placeholder="Enter password" name="password" required class="iInput" type="password" class="form-control">
-            </div>
-            <button class="btn btn-primary" routerLinkActive="list-item-active" routerLink="/login"><b>Login</b></button>
-        </form>
+        </div>
     </div>
 </div>
 
@@ -24,4 +32,4 @@
     <p>Email = <b>{{currentUser.email}}</b></p>
     <p>Token =  <b>{{currentUser.token}}</b></p>
 </div>
-            
+
