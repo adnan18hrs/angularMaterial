@@ -3,6 +3,9 @@ import { AuthService } from 'src/app/modules/service/AuthService.component';
 import { Router } from '@angular/router';
 import { LoginComponent } from 'src/app/modules/login/login.component';
 import { LoginService } from 'src/app/modules/login.service';
+import { getUserLoaded, getUserLogout, RootReducerState } from 'src/app/reducers';
+import { Store } from '@ngrx/store';
+import { UserListLogoutAction, UserListSuccessAction } from 'src/app/actions/user-action';
 
 @Component({
   selector: 'app-header',
@@ -12,10 +15,12 @@ import { LoginService } from 'src/app/modules/login.service';
 export class HeaderComponent implements OnInit {
 
   @Output() toggleSideBarForMe: EventEmitter<any> = new EventEmitter();
-  public userIsPresent:string;
+  public userIsPresent:boolean;
+  public loginOrNot:boolean=false;
   public authService:AuthService;
+
   
-  constructor(private router:Router, public loginService:LoginService) {
+  constructor(private router:Router, public loginService:LoginService, private store:Store<RootReducerState>) {
     //this.userIsPresent = localStorage.getItem('loggedIn');
     this.userIsPresent = JSON.parse(localStorage.getItem('loggedIn'));
    }
@@ -31,7 +36,23 @@ export class HeaderComponent implements OnInit {
     console.log("userIsPresent = ",this.userIsPresent);
     this.getScreenWidth = window.innerWidth;
     this.getScreenHeight = window.innerHeight;
+
+    //checking login or not
+    const loaded$ = this.store.select(getUserLoaded);
+    loaded$.subscribe(data=>{
+      if(data==true){
+        this.userIsPresent = data;
+      }
+    });
+    const logout$ = this.store.select(getUserLogout);
+    logout$.subscribe(data=>{
+      if(data==true){
+        this.userIsPresent = false;
+      }
+    });
+
   }
+
   logout(){
     console.log("logging out");
     this.authService = new AuthService();
@@ -40,8 +61,9 @@ export class HeaderComponent implements OnInit {
     this.authService.clearLoggedIn();
     this.authService.clearLoggedIn();
     this.router.navigate(["/login"]);
-    this.loginService.refreshNgOnit();
-    this.userIsPresent = JSON.parse(localStorage.getItem('loggedIn'));
+    this.store.dispatch(new UserListLogoutAction());
+    //this.loginService.refreshNgOnit();
+    //this.userIsPresent = JSON.parse(localStorage.getItem('loggedIn'));
   }
 
   runNgOnit(){

@@ -1,6 +1,11 @@
 
 <div class="container">
     <p class="text-muted"><b>Home component!</b></p>
+    <div *ngIf="loading" class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
     <div class="row">
         <div class="col-lg-3 col-md-4 col-sm-6 card p-4" *ngFor="let obj of products" id="cardBackground" style="padding: 2px;" (click)="onProduct($event, obj)" routerLink="/product/{{obj._id}}">
             <app-cards [product]="obj"></app-cards>

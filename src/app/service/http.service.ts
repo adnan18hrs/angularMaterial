@@ -10,7 +10,7 @@ export class HttpService{
     AUTH_TOKEN = 'auth_token';
     constructor(private httpClient:HttpClient){}
     
-    get(url: string, params?: any): Observable<any> {
+    callHttpFunction(url: string, params?: any): Observable<any> {
         const data = {params, headers: this.getAuthHeader()};
         return this.httpClient
           .get("assets/product.json", data).pipe(catchError(this.errorHandler.bind(this)));

@@ -34,6 +34,7 @@ export class YoutubeRepository{
       });
       return [loading$, getProductData$, error$, loaded$];
   }
+
   userDelete(id:number){
     this.store.dispatch(new ProductDeleteAction({id}));
   }

@@ -9,8 +9,7 @@ export class ApiService {
   
   constructor(private httpService: HttpService) {
   }
-
   getAllPost(): Observable<Product[]> {
-      return this.httpService.get('/products').pipe(map(data=>data as Product[]));
+      return this.httpService.callHttpFunction('/products').pipe(map(data=>data as Product[]));
   }
 }
