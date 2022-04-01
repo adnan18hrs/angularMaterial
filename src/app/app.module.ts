@@ -19,6 +19,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ApiService } from './service/app.service';
 import { HttpService } from './service/http.service';
 import { YoutubeRepository } from './service/youtube-repository';
+import { ProductComponent } from './modules/product/product.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { YoutubeRepository } from './service/youtube-repository';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
     
   ],
-  providers: [HeaderComponent, ApiService, HttpService, YoutubeRepository],
+  providers: [HeaderComponent, ApiService, HttpService, YoutubeRepository, ProductComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -32,9 +32,11 @@ export class ProductComponent implements OnInit {
     console.log("this.mySelect selectChange= ", this.mySelect);
   }
 
-  addToCart(event, obj:Product){
+  addToCart(event, obj:Product, force=false){
     console.log("orderItem = ", this.orderItem);
-    obj.inCart=Number(this.mySelect);
+    if(!force){
+      obj.inCart=Number(this.mySelect);
+    }
     //localStorage.removeItem("currentCart");
     if(this.checkCartSize()){
       console.log("cart is not empty");

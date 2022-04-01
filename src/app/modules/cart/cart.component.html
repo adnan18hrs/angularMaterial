@@ -15,8 +15,13 @@
                 <div class="col-lg-2 col-sm-6">
                     <form>
                         <div class="form-group">
-                            <select [disabled]="!product.countInStock" class="form-control" id="sel1" name="sellist1" [(ngModel)]="product.inCart">
-                                <option *ngFor="let player of counter(product.countInStock); let x=index">
+                            <select [disabled]="!product.countInStock" class="form-control" id="sel1" name="sellist1" [(ngModel)]="product.inCart" *ngIf="!changing" (click)="onChanging($event, product.inCart, product)">
+                                <option *ngFor="let player of counter(product.countInStock); let x=index" [value]="x+1">
+                                    {{x+1}}
+                                </option>
+                            </select>
+                            <select [disabled]="!product.countInStock" class="form-control" id="sel1" name="sellist1" [(ngModel)]="mySelect" *ngIf="changing" (click)="onChanging($event, mySelect, product)">
+                                <option *ngFor="let player of counter(product.countInStock); let x=index" [value]="x+1">
                                     {{x+1}}
                                 </option>
                             </select>

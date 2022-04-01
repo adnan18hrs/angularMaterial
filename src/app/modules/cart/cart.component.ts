@@ -5,6 +5,7 @@ import { CartListIncreaseCount, CartListAddingAction } from 'src/app/actions/car
 import { Product } from 'src/app/model/product';
 import { getCartLoading, getCount, getTotalPrice, RootReducerState } from 'src/app/reducers';
 import { YoutubeRepository } from 'src/app/service/youtube-repository';
+import { ProductComponent } from '../product/product.component';
 
 @Component({
   selector: 'app-cart',
@@ -22,9 +23,11 @@ export class CartComponent implements OnInit {
   public error:boolean;
   public itemsCount:number;
   public totalPrice:number;
+  public changing:boolean=false;
   public cartTemp:Product[]=[];
+  public mySelect:number;
   
-  constructor(private store:Store<RootReducerState>, public youtubeRepo:YoutubeRepository) { }
+  constructor(private store:Store<RootReducerState>, public youtubeRepo:YoutubeRepository, public productComponent:ProductComponent) { }
 
   ngOnInit() {
     
@@ -50,6 +53,17 @@ export class CartComponent implements OnInit {
       this.totalPrice = this.totalPrice + (element.price*element.inCart);
     });    
     this.itemsCount = JSON.parse(localStorage.getItem("currentCart")).length;
+  }
+
+
+  onChanging(event, x:number, product:Product){
+    /*this.mySelect=x;
+    this.changing=true;
+    if(x!=product.inCart){
+      product.inCart=this.mySelect;
+      console.log("value in cart is = ", product.inCart);
+      this.productComponent.addToCart(event, product, true);
+    }*/
   }
 
 
