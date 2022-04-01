@@ -15,7 +15,7 @@
                 <div class="col-lg-2 col-sm-6">
                     <form>
                         <div class="form-group">
-                            <select [disabled]="!product.countInStock" class="form-control" id="sel1" name="sellist1">
+                            <select [disabled]="!product.countInStock" class="form-control" id="sel1" name="sellist1" [(ngModel)]="product.inCart">
                                 <option *ngFor="let player of counter(product.countInStock); let x=index">
                                     {{x+1}}
                                 </option>
@@ -27,8 +27,8 @@
             </div>
         </div>
         <div class="col-lg-4 col-sm-12 p-5" style="border: 1px solid black;" *ngIf="cartSize">
-            <div class="row text-muted"><h4>Total Items()</h4></div>
-            <div class="row"><h6>Rs.9999999</h6></div><hr>
+            <div class="row text-muted"><h4>Total Items({{itemsCount}})</h4></div>
+            <div class="row"><h6>Rs.{{totalPrice}}</h6></div><hr>
             <div class="row"><a class="btn btn-primary" style="display:block">PROCEED TO CHECKOUT</a></div><hr>
         </div>
     </div>

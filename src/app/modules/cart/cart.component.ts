@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { stringify } from 'querystring';
+import { CartListIncreaseCount, CartListAddingAction } from 'src/app/actions/cart-action';
 import { Product } from 'src/app/model/product';
+import { getCartLoading, getCount, getTotalPrice, RootReducerState } from 'src/app/reducers';
+import { YoutubeRepository } from 'src/app/service/youtube-repository';
 
 @Component({
   selector: 'app-cart',
@@ -14,19 +18,45 @@ export class CartComponent implements OnInit {
   public cartTemp2:Product[]=[];
   public cartSize:boolean;
   public flag:boolean;
-  constructor() { }
+  public loading:boolean;
+  public error:boolean;
+  public itemsCount:number;
+  public totalPrice:number;
+  public cartTemp:Product[]=[];
+  
+  constructor(private store:Store<RootReducerState>, public youtubeRepo:YoutubeRepository) { }
 
   ngOnInit() {
+    
     if(JSON.parse(localStorage.getItem("currentCart"))!=null){
       console.log("cart is not empty...........");
       this.cartItems = JSON.parse(localStorage.getItem("currentCart"));
       console.log("cartItems = ",this.cartItems);
       this.checkCartSize();
     }
+    const count$ = this.store.select(getCount);
+    count$.subscribe(data=>{
+      this.itemsCount=data;
+    });
+    const getTotalPrice$ = this.store.select(getTotalPrice);
+    getTotalPrice$.subscribe(data=>{
+      this.totalPrice=data;
+    });
+
+    this.cartTemp=[];
+    this.totalPrice=0;
+    this.cartTemp = JSON.parse(localStorage.getItem("currentCart"));
+    this.cartTemp.forEach((element,index)=>{
+      this.totalPrice = this.totalPrice + (element.price*element.inCart);
+    });    
+    this.itemsCount = JSON.parse(localStorage.getItem("currentCart")).length;
   }
+
+
   counter(x:number) {
     return new Array(x);
   }
+  
   onDelete(event, obj:Product){
     console.log("hello");
     this.cartItems=[];
@@ -39,12 +69,16 @@ export class CartComponent implements OnInit {
     });
     localStorage.setItem("currentCart", JSON.stringify(this.cartItems));
     this.checkCartSize();
+    this.deleteFromReducer(obj);
   }
   checkCartSize(){
     if(JSON.parse(localStorage.getItem("currentCart")).length>0){
       this.cartSize=true;
     }
     else{this.cartSize=false;}
+  }
+  deleteFromReducer(obj:Product){
+    const observer$ = this.youtubeRepo.deleteFromCart(obj);
   }
   
 }

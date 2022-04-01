@@ -7,6 +7,8 @@ import { UserData } from 'src/app/model/userData';
 import { RootReducerState } from 'src/app/reducers';
 import { TransferService } from 'src/app/shared/transfer.service';
 import { SignupService } from '../signup.service';
+import { Injectable } from '@angular/core';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-signup',

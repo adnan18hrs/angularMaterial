@@ -37,25 +37,25 @@
                     <div class="col-5" *ngIf="product.countInStock">InStock</div>
                     <div class="col-5" *ngIf="!product.countInStock">OutOfStock</div>
                 </div><hr>
-                <div class="row">
-                    <div class="col-5">Qty</div>
-                    <div class="col-5">
-                        <form>
+                <form>
+                    <div class="row">
+                        <div class="col-5">Qty</div>
+                        <div class="col-5">
                             <div class="form-group">
-                            <select [disabled]="!product.countInStock" class="form-control" id="sel1" name="sellist1">
-                                <option *ngFor="let player of counter(); let x=index">
-                                    {{x+1}}
-                                </option>
-                            </select>
+                                <select [disabled]="!product.countInStock" class="form-control" id="sel1" name="my-select" [(ngModel)]="mySelect" (change)="selectChange()">
+                                    <option *ngFor="let player of counter(); let x=index" [value]="x+1">
+                                        {{x+1}}
+                                    </option>
+                                </select>
                             </div>
-                        </form>
-                    </div>
-                </div><hr>
-                <div class="row p-2">
-                    <button class="btn btn-primary" [disabled]="!product.countInStock" routerLink="/cart" (click)="addToCart($event, product)">
-                        <a class=" text-muted" style="text-decoration: none;color:black"><b style="color: white;">Add to cart</b></a>
-                    </button>
-                </div><hr>
+                        </div>
+                    </div><hr>
+                    <div class="row p-2">
+                        <button class="btn btn-primary" [disabled]="!product.countInStock" routerLink="/cart" (click)="addToCart($event, product)">
+                            <a class=" text-muted" style="text-decoration: none;color:black"><b style="color: white;">Add to cart</b></a>
+                        </button>
+                    </div><hr>
+                </form>
             </div>
         </div>
         <!--
@@ -69,5 +69,24 @@
         </div>-->
     </div>
 </div>
-
-
+<!--
+    <form #signupForm="ngForm" (ngSubmit)="onSignup(signupForm.value)">
+        <div class="form-group">
+            <label class="form-label" for="name">Name</label>
+            <input ngModel required placeholder="Enter name" type="name" class="iInput form-control" value="" name="name">
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="email">Email Address</label>
+            <input ngModel required placeholder="Enter Email" type="username" class="iInput form-control" value="" name="username">
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="password">Password</label>
+            <input ngModel required placeholder="Enter Password" type="password" class="iInput form-control" value="" name="password">
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="passwordConfirm">Confirm Password</label>
+            <input ngModel required placeholder="Confirm Password" type="password" class="iInput form-control" value="" name="repassword">
+        </div>
+        <button ngModel type="submit" class="btn btn-primary mt-2">Register</button>
+    </form>
+-->
