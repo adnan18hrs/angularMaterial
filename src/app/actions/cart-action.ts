@@ -29,5 +29,5 @@ export class CartListAddingAction{
 }
 export class CartUpdateAction{
     readonly type = CART_DELETE;
-    constructor(public payload?: {data:Product}){}
+    constructor(public payload?: {data:Product[]}){}
 }

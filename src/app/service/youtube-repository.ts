@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { combineLatest, Observable } from "rxjs";
 import { take } from "rxjs/operators";
-import { CartDeleteAction, CartListIncreaseCount, CartListAddingAction } from "../actions/cart-action";
+import { CartDeleteAction, CartListIncreaseCount, CartListAddingAction, CartUpdateAction } from "../actions/cart-action";
 import { ProductAddAction, ProductDeleteAction, ProductListErrorAction, ProductListRequestAction, ProductListSuccessAction, ProductUpdateAction } from "../actions/product-action";
 import { Product } from "../model/product";
 import { getCartError, getCartLoaded, getCartLoading, getCarts, getError, getProductLoaded, getProductLoading, getProducts, RootReducerState } from "../reducers";
@@ -35,7 +35,7 @@ export class YoutubeRepository{
       });
       return [loading$, getProductData$, error$, loaded$];
   }
-  addToReducerCart(data:Product[]) : [Observable<boolean>, Observable<Product[]>, Observable<boolean>, Observable<boolean>] {
+  addToReducerCart(data:Product[], force:boolean) : [Observable<boolean>, Observable<Product[]>, Observable<boolean>, Observable<boolean>] {
     
     const loading$ = this.store.select(getCartLoading);
     const loaded$ = this.store.select(getCartLoaded);
@@ -46,8 +46,13 @@ export class YoutubeRepository{
     const cnt = JSON.parse(localStorage.getItem("currentCart")).length;
 
     combineLatest([loaded$, loading$]).pipe(take(1)).subscribe((condition)=>{
-      this.store.dispatch(new CartListIncreaseCount({cnt}));
-      this.store.dispatch(new CartListAddingAction({data}));
+      if(!force){
+        this.store.dispatch(new CartListIncreaseCount({cnt}));
+        this.store.dispatch(new CartListAddingAction({data}));
+      }
+      else{
+        this.store.dispatch(new CartUpdateAction({data}));
+      }
     });
     return [loading$, getCartData$, error$, loaded$];
   }

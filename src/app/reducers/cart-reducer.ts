@@ -35,7 +35,7 @@ export function CartReducer(state=initialState, action:Action):CartReducerState{
             for(var x of updatedCarts){
                 price = price + (x.price)*(x.inCart);
             }
-            console.log("totalPrice = ", price); // prints values: 10, 20, 30, 40
+            console.log("totalPrice A = ", price); // prints values: 10, 20, 30, 40
             return {...state, loading:false, loaded:true, carts:updatedCarts, error:false, totalPrice:price};
         }
         case CART_DELETE:{
@@ -47,7 +47,7 @@ export function CartReducer(state=initialState, action:Action):CartReducerState{
             for(var x of carts){
                 price = price + (x.price)*(x.inCart);
             }
-            console.log("totalPrice = ", price); // prints values: 10, 20, 30, 40
+            console.log("totalPrice D = ", price); // prints values: 10, 20, 30, 40
             return {...state, ...{carts}, totalPrice:price};
         }
         case CART_ADD:{
@@ -55,8 +55,8 @@ export function CartReducer(state=initialState, action:Action):CartReducerState{
             return {...state, ...{carts}};
         }
         case CART_UPDATE:{
-            const carts = state.carts.filter(data=>data._id!==action.payload.data.id);
-            const updatedCarts = carts.concat(action.payload.data);
+            const carts = state.carts.filter(data=>data._id!==action.payload.data[0].id);
+            const updatedCarts = carts.concat(action.payload.data[0]);
             return {...state, ...{carts:updatedCarts}};
         }
         case CART_LIST_ERROR:{

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { stringify } from 'querystring';
 import { CartListIncreaseCount, CartListAddingAction } from 'src/app/actions/cart-action';
@@ -14,6 +15,10 @@ import { ProductComponent } from '../product/product.component';
 })
 export class CartComponent implements OnInit {
 
+  animalControl = new FormControl('');
+
+
+
   public cartItems:Product[]=[];
   public cartTemp1:Product[]=[];
   public cartTemp2:Product[]=[];
@@ -24,8 +29,9 @@ export class CartComponent implements OnInit {
   public itemsCount:number;
   public totalPrice:number;
   public changing:boolean=false;
+  public alwaysTrue:boolean=true;
   public cartTemp:Product[]=[];
-  public mySelect:number;
+  public mySelect:number=1;
   
   constructor(private store:Store<RootReducerState>, public youtubeRepo:YoutubeRepository, public productComponent:ProductComponent) { }
 
@@ -54,16 +60,23 @@ export class CartComponent implements OnInit {
     });    
     this.itemsCount = JSON.parse(localStorage.getItem("currentCart")).length;
   }
+  makingSelectEqualToInCart(x:number){
+    console.log("makingSelectEqualToInCart = ", x);
+    this.mySelect = x;
+  }
 
 
   onChanging(event, x:number, product:Product){
-    /*this.mySelect=x;
+    console.log("x = ", x);
+    console.log("product.idcart = ", product.inCart);
+    this.mySelect=x;
     this.changing=true;
     if(x!=product.inCart){
+      console.log("inCart before = ", product.inCart);
       product.inCart=this.mySelect;
-      console.log("value in cart is = ", product.inCart);
+      console.log("inCart after = ", product.inCart);
       this.productComponent.addToCart(event, product, true);
-    }*/
+    }
   }
 
 

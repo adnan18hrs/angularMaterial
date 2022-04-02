@@ -33,6 +33,7 @@ export class ProductComponent implements OnInit {
   }
 
   addToCart(event, obj:Product, force=false){
+    console.log("force = ", force);
     console.log("orderItem = ", this.orderItem);
     if(!force){
       obj.inCart=Number(this.mySelect);
@@ -68,14 +69,14 @@ export class ProductComponent implements OnInit {
     }
     console.log("all currentCart = ",JSON.parse(localStorage.getItem("currentCart")));
     //this.router.navigate(["/product/x"]);
-    this.addToCartReducer(obj);
+    this.addToCartReducer(obj, force);
   }
 
-  addToCartReducer(obj:Product){
+  addToCartReducer(obj:Product, force:boolean){
     this.carts.push(obj);
     
     console.log("calling addtocart inside home ts file");
-    const observer$ = this.youtubeRepo.addToReducerCart(this.carts);
+    const observer$ = this.youtubeRepo.addToReducerCart(this.carts, force);
     const loading$ = observer$[0];
     const product$ = observer$[1];
     const error$ = observer$[2];
