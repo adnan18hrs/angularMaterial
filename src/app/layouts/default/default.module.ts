@@ -10,7 +10,7 @@ import { DashboardService } from 'src/app/modules/dashboard.service';
 import { LoginComponent } from 'src/app/modules/login/login.component';
 import { AllMaterialFolderModule } from 'src/app/allMaterialFolder/material.module';
 import { HighchartsChartModule } from 'highcharts-angular';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -45,7 +45,8 @@ import { OrderComponent } from 'src/app/modules/order/order.component';
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
 
   ],
   providers: [
