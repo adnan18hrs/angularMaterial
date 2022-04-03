@@ -8,6 +8,9 @@ import { ProductComponent } from './modules/product/product.component';
 import { SignupComponent } from './modules/signup/signup.component';
 import { CartComponent } from './modules/cart/cart.component';
 import { OrderComponent } from './modules/order/order.component';
+import { ShippingComponent } from './modules/shipping/shipping.component';
+import { PaymentComponent } from './modules/payment/payment.component';
+import { PlaceorderComponent } from './modules/placeorder/placeorder.component';
 
 const routes: Routes = [{
   path: '',
@@ -33,6 +36,15 @@ const routes: Routes = [{
   }, {
     path: 'order',
     component: OrderComponent
+  }, {
+    path: 'shipping',
+    component: ShippingComponent
+  }, {
+    path: 'payment',
+    component: PaymentComponent
+  }, {
+    path: 'placeorder',
+    component: PlaceorderComponent
   }]
 }];
 

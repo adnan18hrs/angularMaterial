@@ -1,0 +1,70 @@
+
+<div class="container">
+    <div>
+        <div class="justify-content-center mb-4 nav">
+            <div class="nav-item"><a routerLink="/login" data-rb-event-key="#/login" class="nav-link">Login</a></div>
+            <div class="nav-item"><a routerLink="/shipping" data-rb-event-key="#/shipping" class="active nav-link">Shipping</a></div>
+            <div class="nav-item"><a routerLink="/payment" class="nav-link" role="button" tabindex="-1" aria-disabled="true">Payment</a></div>
+            <div class="nav-item"><a routerLink="/placeorder" class="nav-link" role="button" tabindex="-1" aria-disabled="true">Place Order</a></div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="list-group list-group-flush">
+                    <div class="list-group-item">
+                        <h2>Shipping</h2>
+                        <p>
+                            <strong>Shipping: </strong>
+                            {{shippingAddress.address}}, {{shippingAddress.city}}, {{shippingAddress.code}}, {{shippingAddress.country}} 
+                        </p>
+                    </div>
+                    <div class="list-group-item"><h2>Payment Method</h2><p><strong>Method: </strong>PayPal</p></div>
+                    <div class="list-group-item"><h2>Order Items</h2>
+                       
+                        <div class="row mt-2" style="align-items: center;" *ngFor="let product of cartItems">
+                            <div class="col-lg-3 col-sm-12">
+                                <img src="{{product.image}}" class="w-100 border-bottom" alt="Sample Image">
+                            </div>
+                            <div class="col-lg-5 col-sm-12 text-muted"><b>{{product.name}}</b></div>
+                            <div class="col-lg-4 col-sm-12">Rs.{{product.price}} * {{product.inCart}} = {{product.inCart*product.price}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="list-group list-group-flush">
+                        <div class="list-group-item"><h2>Order Summary</h2></div>
+                        <div class="list-group-item">
+                            <div class="row">
+                                <div class="col">Items:</div>
+                                <div class="col">Rs. {{allTotal}}</div>
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="row">
+                                <div class="col">Shipping:</div>
+                                <div class="col">0.00</div>
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="row">
+                                <div class="col">Tax:</div>
+                                <div class="col">Rs. 100</div>
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="row">
+                                <div class="col">Total:</div>
+                                <div class="col">Rs. {{allTotal+100}}</div>
+                            </div>
+                        </div>
+                        <div class="list-group-item"></div>
+                        <div class="list-group-item">
+                            <button type="button" class="btn-block btn btn-primary">Place Order</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

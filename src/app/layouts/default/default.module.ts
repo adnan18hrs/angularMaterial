@@ -18,6 +18,9 @@ import { SignupComponent } from 'src/app/modules/signup/signup.component';
 import { ProductComponent } from 'src/app/modules/product/product.component';
 import { CartComponent } from 'src/app/modules/cart/cart.component';
 import { OrderComponent } from 'src/app/modules/order/order.component';
+import { ShippingComponent } from 'src/app/modules/shipping/shipping.component';
+import { PaymentComponent } from 'src/app/modules/payment/payment.component';
+import { PlaceorderComponent } from 'src/app/modules/placeorder/placeorder.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { OrderComponent } from 'src/app/modules/order/order.component';
     SignupComponent,
     ProductComponent,
     CartComponent,
-    OrderComponent
+    OrderComponent,
+    ShippingComponent,
+    PaymentComponent,
+    PlaceorderComponent
   ],
   imports: [
     CommonModule,

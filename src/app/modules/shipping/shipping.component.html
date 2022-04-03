@@ -1,0 +1,36 @@
+<main class="py-3">
+    <div class="container">
+        <div class="container">
+            <div class="justify-content-md-center row">
+                <div class="col-md-6 col-12">
+                    <div class="justify-content-center mb-4 nav">
+                        <div class="nav-item"><a routerLink="/login" data-rb-event-key="#/login" class="nav-link">Login</a></div>
+                        <div class="nav-item"><a routerLink="/shipping" data-rb-event-key="#/shipping" class="active nav-link">Shipping</a></div>
+                        <div class="nav-item"><a routerLink="/payment" class="nav-link disabled" role="button" tabindex="-1" aria-disabled="true">Payment</a></div>
+                        <div class="nav-item"><a routerLink="/placeorder" class="nav-link disabled" role="button" tabindex="-1" aria-disabled="true">Place Order</a></div>
+                    </div>
+                    <h1>Shipping</h1>
+                    <form  #signupForm="ngForm" novalidate>
+                        <div class="form-group">
+                            <label class="form-label" for="address">Address</label>
+                            <input name="address" ngModel required placeholder="Enter address" type="text" class="iInput form-control" [(ngModel)]="shippingAddress.address">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="city">City</label>
+                            <input name="city" ngModel required placeholder="Enter city" type="text" class="iInput form-control" [(ngModel)]="shippingAddress.city">
+                        </div>
+                        <div class="form-g  roup">
+                            <label class="form-label" for="postalCode">Postal Code</label>
+                            <input name="code" ngModel required placeholder="Enter postal code" type="text" class="iInput form-control" [(ngModel)]="shippingAddress.code">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="country">Country</label>
+                            <input name="country" ngModel required placeholder="Enter country" type="text" class="iInput form-control" [(ngModel)]="shippingAddress.country">
+                        </div>
+                        <button type="submit" (click)="onSignup(signupForm)" routerLink="/payment" class="btn btn-primary mt-2">Continue</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
