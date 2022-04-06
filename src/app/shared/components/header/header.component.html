@@ -24,7 +24,7 @@
               <button mat-menu-item>Item 2</button>
             </mat-menu>
         </div>
-        <div class="col-lg-2 col-4" style="text-align: center;">
+        <div class="col-lg-2 col-4" style="text-align: center;"*ngIf="!userIsPresent">
           <button class="btn btn-primary" *ngIf="!userIsPresent" mat-button [matMenuTriggerFor]="menu1">
             <a class=" text-muted" style="text-decoration: none;color:black"><b style="color: white;">Join Us</b></a>
           </button>
@@ -32,9 +32,16 @@
             <button mat-menu-item routerLink="/login"><b>Login</b></button>
             <button mat-menu-item routerLink="/signup"><b>Sign up</b></button>
           </mat-menu>
-          <button class="btn btn-primary" *ngIf="userIsPresent">
-            <a *ngIf="userIsPresent" class="text-muted" style="text-decoration: none;" (click)="logout()"><b style="color: white;">Logout</b></a>
+        </div>
+        <div class="col-lg-2 col-4" style="text-align: center;">
+          
+          <button class="btn btn-primary" *ngIf="userIsPresent" mat-button [matMenuTriggerFor]="menu1">
+            <a class="text-muted" style="text-decoration: none;"><b style="color: white;" mat-button [matMenuTriggerFor]="logoutMenu" *ngIf="currentUser">{{this.currentUser.email}}</b></a>
           </button>
+          <mat-menu #logoutMenu="matMenu">
+            <button mat-menu-item routerLink="/login"><b>Profile</b></button>
+            <button mat-menu-item routerLink="/"  (click)="logout()"><b>Logout</b></button>
+          </mat-menu>
         </div>
       </div>
     </div>

@@ -10,7 +10,7 @@
                 <div class="col-lg-3 col-sm-12">
                     <img src="{{product.image}}" class="w-100 border-bottom" alt="Sample Image">
                 </div>
-                <div class="col-lg-4 col-sm-12 text-muted"><b>{{product.name}}</b></div>
+                <div class="col-lg-4 col-sm-12 text-muted"><a  (click)="onProduct($event, product)" routerLink="/product/{{product._id}}" class="linkName text-muted"><b>{{product.name}}</b></a></div>
                 <div class="col-lg-2 col-sm-12">Rs.{{product.price}}</div>
                 <div class="col-lg-2 col-sm-6">
                     <form>

@@ -52,6 +52,9 @@ export class AuthService{
             localStorage.setItem('refreshtoken',token);
         //}
     }
+    getToken(){
+            return localStorage.getItem('refreshtoken');
+    }
     clearCurrntUser(){
         //console.log("setting null in current user");
         localStorage.removeItem('currentUser');

@@ -13,7 +13,7 @@ const initialState:UserReducerState={
     loaded:false,
     loading:false,
     error:false,
-    logout:true,
+    logout:false,
     users:null
 }
 // 3. this reducer will be called because "new UserListRequestAction()" action is dispatched from user.component.ts 

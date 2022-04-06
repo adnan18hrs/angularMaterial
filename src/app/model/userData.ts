@@ -2,6 +2,7 @@
 export class UserData{
 
     username:string;
+    name:string;
     token:string;
     email:string;
     roles:[];

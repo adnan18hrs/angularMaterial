@@ -4,8 +4,8 @@ import { Observable, throwError } from 'rxjs';
 import { LoggingData } from '../model/loggingData';
 //8000 is default port for Django, this API is for calling backend
 const baseUrl = 'http://localhost:8000/api/tutorials';
-//const baseLoggingUrl = 'http://localhost:8080/api/auth/signin';
-const baseLoggingUrl = 'https://adnan-springboot-mongo-swagger.herokuapp.com/api/auth/signin';
+const baseLoggingUrl = 'http://localhost:8080/api/auth/signin';
+//const baseLoggingUrl = 'https://adnan-springboot-mongo-swagger.herokuapp.com/api/auth/signin';
 const getUserUrl = 'http://localhost:8080/api/user/user';
 const getUserByMailID = 'http://localhost:8080/api/user/userByMailId/'
 

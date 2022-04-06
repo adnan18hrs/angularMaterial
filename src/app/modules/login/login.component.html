@@ -8,7 +8,7 @@
     <div class="justify-content-md-center row">
         <div class="col-md-6 col-12"  *ngIf="!userIsPresent && !loading">
             <h1>Sign In</h1>
-            <form  #userformBooking="ngForm" (ngSubmit)="onLogin(userformBooking.value)">
+            <form  #userformBooking="ngForm">
                 <div class="form-group">
                     <label class="form-label" for="email">Email Address</label>
                     <input ngModel placeholder="Enter Email Id" name="username" required class="iInput" type="text" class="form-control">
@@ -17,7 +17,7 @@
                     <label class="form-label" for="password">Password</label>
                     <input ngModel placeholder="Enter password" name="password" required class="iInput" type="password" class="form-control">
                 </div>
-                <button class="btn btn-primary mt-2" routerLink="/login">Sign In</button>
+                <button class="btn btn-primary mt-2" routerLink="/" type="sumbit" (click)="onLogin(userformBooking.value)">Sign In</button>
             </form>
             <div class="py-3 row">
                 <div class="col">New Customer? <a routerLink="/signup">Register</a></div>
@@ -26,10 +26,40 @@
     </div>
 </div>
 
+<!--
 <div class="container" *ngIf="userIsPresent">
     <p>successfully logged in {{userIsPresent}}</p>
+    <p>Name =  <b>{{currentUser.name}}</b></p>
     <p>Username =  <b>{{currentUser.username}}</b></p>
     <p>Email = <b>{{currentUser.email}}</b></p>
     <p>Token =  <b>{{currentUser.token}}</b></p>
+</div>
+-->
+
+<div class="container" *ngIf="userIsPresent"> 
+    <div class="justify-content-md-center row">
+        <div class="col-md-6 col-12">
+            <h1>Update profile</h1>
+            <form #signupForm="ngForm">
+                <div class="form-group">
+                    <label class="form-label" for="name">Name</label>
+                    <input ngModel required placeholder="Enter name" type="name" class="iInput form-control" name="name" [(ngModel)]="currentUser.name">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="email">Email Address</label>
+                    <input ngModel required placeholder="Enter Email" type="username" class="iInput form-control" name="username" [(ngModel)]="currentUser.username">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="password">Password</label>
+                    <input ngModel required placeholder="Enter Password" type="password" class="iInput form-control" name="password">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="passwordConfirm">Confirm Password</label>
+                    <input ngModel required placeholder="Confirm Password" type="password" class="iInput form-control" name="repassword">
+                </div>
+                <button ngModel type="submit" class="btn btn-primary mt-2" routerLink="/login" (click)="updateProfile(signupForm.value)">Update</button>
+            </form>
+        </div>
+    </div>
 </div>
 

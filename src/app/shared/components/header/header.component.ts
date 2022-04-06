@@ -3,9 +3,10 @@ import { AuthService } from 'src/app/modules/service/AuthService.component';
 import { Router } from '@angular/router';
 import { LoginComponent } from 'src/app/modules/login/login.component';
 import { LoginService } from 'src/app/modules/login.service';
-import { getUserLoaded, getUserLogout, RootReducerState } from 'src/app/reducers';
+import { getUserLoaded, getUserLogout, getUsers, RootReducerState } from 'src/app/reducers';
 import { Store } from '@ngrx/store';
 import { UserListLogoutAction, UserListSuccessAction } from 'src/app/actions/user-action';
+import { UserData } from 'src/app/model/userData';
 
 @Component({
   selector: 'app-header',
@@ -29,6 +30,7 @@ export class HeaderComponent implements OnInit {
   public getScreenHeight: any;
   public widthIs:boolean;
   public widthIsForDropdown:boolean;
+  public currentUser:UserData;
   
   ngOnInit() {
     console.log("inside ngOnit");
@@ -38,12 +40,23 @@ export class HeaderComponent implements OnInit {
     this.getScreenHeight = window.innerHeight;
 
     //checking login or not
+
+    const user$ = this.store.select(getUsers);
     const loaded$ = this.store.select(getUserLoaded);
+
+    user$.subscribe(data=>{
+      if(data!=null){
+        this.currentUser = data;
+        console.log("currentUserrrrrrrrr = ", this.currentUser.email);
+      }
+    });
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     loaded$.subscribe(data=>{
       if(data==true){
         this.userIsPresent = data;
       }
     });
+    
   }
 
   logout(){

@@ -68,7 +68,7 @@ export class SignupComponent implements OnInit {
     localStorage.setItem('currentUser',JSON.stringify(response));
     console.log("response['token'] = ",response['token']);
     localStorage.setItem('refreshtoken',response['token']);
-    this.router.navigate(["/login"]);
+    //this.router.navigate(["/login"]);
   }
   
   ngOnInit() {}

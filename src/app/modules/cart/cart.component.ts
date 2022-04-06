@@ -98,6 +98,10 @@ export class CartComponent implements OnInit {
     this.checkCartSize();
     this.deleteFromReducer(obj);
   }
+  onProduct(event, obj:Product){
+    localStorage.setItem('currentProduct',JSON.stringify(obj));
+    //this.router.navigate(["/product/x"]);
+  }
   checkCartSize(){
     if(JSON.parse(localStorage.getItem("currentCart")).length>0){
       this.cartSize=true;

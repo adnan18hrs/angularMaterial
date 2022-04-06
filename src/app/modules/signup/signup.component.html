@@ -3,7 +3,7 @@
     <div class="justify-content-md-center row">
         <div class="col-md-6 col-12">
             <h1>Sign Up</h1>
-            <form #signupForm="ngForm" (ngSubmit)="onSignup(signupForm.value)">
+            <form #signupForm="ngForm" >
                 <div class="form-group">
                     <label class="form-label" for="name">Name</label>
                     <input ngModel required placeholder="Enter name" type="name" class="iInput form-control" value="" name="name">
@@ -20,7 +20,7 @@
                     <label class="form-label" for="passwordConfirm">Confirm Password</label>
                     <input ngModel required placeholder="Confirm Password" type="password" class="iInput form-control" value="" name="repassword">
                 </div>
-                <button ngModel type="submit" class="btn btn-primary mt-2">Register</button>
+                <button ngModel type="submit" class="btn btn-primary mt-2"  routerLink="/" (click)="onSignup(signupForm.value)">Register</button>
             </form>
             <div class="py-3 row">
                 <div class="col">Have an Account? <a routerLink="/login">Sign In</a></div>

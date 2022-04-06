@@ -12,6 +12,8 @@ import { getUserError, getUserLoaded, getUserLoading, getUserLogout, getUsers, R
 import { Store } from '@ngrx/store';
 import { take } from 'rxjs/operators';
 import { UserListErrorAction, UserListRequestAction, UserListSuccessAction } from 'src/app/actions/user-action';
+import { SignupData } from 'src/app/model/SignupData';
+import { SignupService } from '../signup.service';
 
 @Component({
   selector: 'app-login',
@@ -26,10 +28,13 @@ export class LoginComponent implements OnInit {
   public userIsPresent:boolean;
   public loading:boolean;
   public error:boolean;
+  public updation:boolean=false;
   public appService: AppService;
+  public dataFromSignup:UserData;
   
   //localStorage.getItem("isLoggedIn") === "true"
-  constructor(private loginService:LoginService, private router:Router, public transferService:TransferService, private store:Store<RootReducerState> ) { 
+  constructor(private loginService:LoginService, private router:Router, public transferService:TransferService, private store:Store<RootReducerState> , 
+    public signupservice:SignupService) { 
     
     console.log("top login constructor");
     this.authService = new AuthService();
@@ -61,6 +66,7 @@ export class LoginComponent implements OnInit {
   }
   
   public onLogin(dataUI:LoggingData){
+    console.log("logging is started");
     const observer$ = this.getLoginData(dataUI);
     const loading$ = observer$[0];
     const user$ = observer$[1];
@@ -104,7 +110,6 @@ export class LoginComponent implements OnInit {
               else{
                 alert("Please check you email ID and password onece again");
               }
-              //this.currentUser
             }, error=>{
               this.store.dispatch(new UserListErrorAction());
             }
@@ -114,6 +119,39 @@ export class LoginComponent implements OnInit {
     });
     return [loading$, getUsrData$, error$, loaded$];
   }
+
+  public updateProfile(dataUI:SignupData){
+    dataUI.email = dataUI.username;
+    if(dataUI.password==dataUI.repassword){
+      this.signupservice.tryUpdating(dataUI,this.headers).subscribe(
+        (response:any)=>{
+          if(response['message']=="Successfully updated user data"){
+            this.updation=true;
+            this.setUserDetails(response);
+            //this.store.dispatch(new UserListErrorAction());
+            console.log("response is ",response);
+            this.assignUserInReducer(response);
+          }
+          else{
+            alert("not registered successfully");
+          }
+        }
+      )
+    }
+    else if(dataUI.password!=dataUI.repassword){alert("password is not matching");}
+    if(this.currentUser.message=='Successfully updated user data'){alert('UPDATED')}
+  }
+  
+  assignUserInReducer(response:any){
+    //const data= response;
+    this.dataFromSignup = new UserData();
+    this.dataFromSignup.email = response['email'];
+    this.dataFromSignup.token = response['token'];
+    this.dataFromSignup.username = response['username'];
+    const data=this.dataFromSignup;
+    console.log("data[0].username = ", this.dataFromSignup.email);
+    this.store.dispatch(new UserListSuccessAction({data}));
+ }
   
   setUserDetails(response){
     console.log("top setUserDetails");
@@ -121,8 +159,12 @@ export class LoginComponent implements OnInit {
     this.currentUser=new UserData();
     this.appService=new AppService();
     this.authService=new AuthService();
+    this.currentUser.name = response['name'];
     this.currentUser.username = response['username'];
     this.currentUser.token = response['token'];
+    if(this.updation){
+      this.currentUser.token = this.authService.getToken();
+    }
     this.currentUser.email = response['email'];
     this.currentUser.roles = response['roles'];
     this.currentUser.id = response['id'];
