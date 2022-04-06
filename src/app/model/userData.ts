@@ -9,7 +9,8 @@ export class UserData{
     id:string;
     type:string;
     message:string;
-
+    repassword:string;
+    password:string;
     isAdmin:boolean;
     isUser:boolean;
     isMod:boolean;

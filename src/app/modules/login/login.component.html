@@ -51,11 +51,11 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="password">Password</label>
-                    <input ngModel required placeholder="Enter Password" type="password" class="iInput form-control" name="password">
+                    <input ngModel required placeholder="Enter Password" type="password" class="iInput form-control" name="password" [(ngModel)]="currentUser.password">
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="passwordConfirm">Confirm Password</label>
-                    <input ngModel required placeholder="Confirm Password" type="password" class="iInput form-control" name="repassword">
+                    <input ngModel required placeholder="Confirm Password" type="password" class="iInput form-control" name="repassword" [(ngModel)]="currentUser.repassword">
                 </div>
                 <button ngModel type="submit" class="btn btn-primary mt-2" routerLink="/login" (click)="updateProfile(signupForm.value)">Update</button>
             </form>

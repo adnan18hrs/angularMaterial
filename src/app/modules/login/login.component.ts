@@ -108,7 +108,7 @@ export class LoginComponent implements OnInit {
                 this.setUserDetails(response);
               }
               else{
-                alert("Please check you email ID and password onece again");
+                alert("Please check you email ID and password once again");
               }
             }, error=>{
               this.store.dispatch(new UserListErrorAction());
@@ -122,7 +122,8 @@ export class LoginComponent implements OnInit {
 
   public updateProfile(dataUI:SignupData){
     dataUI.email = dataUI.username;
-    if(dataUI.password==dataUI.repassword){
+    console.log("dataUI.password ",dataUI.password);
+    if(dataUI.repassword&&dataUI.password!=null&&dataUI.password==dataUI.repassword){
       this.signupservice.tryUpdating(dataUI,this.headers).subscribe(
         (response:any)=>{
           if(response['message']=="Successfully updated user data"){
@@ -131,6 +132,7 @@ export class LoginComponent implements OnInit {
             //this.store.dispatch(new UserListErrorAction());
             console.log("response is ",response);
             this.assignUserInReducer(response);
+            if(response['message']=='Successfully updated user data'){alert('UPDATED')}
           }
           else{
             alert("not registered successfully");
@@ -138,8 +140,7 @@ export class LoginComponent implements OnInit {
         }
       )
     }
-    else if(dataUI.password!=dataUI.repassword){alert("password is not matching");}
-    if(this.currentUser.message=='Successfully updated user data'){alert('UPDATED')}
+    else{alert("password is not matching or not inserted");}
   }
   
   assignUserInReducer(response:any){

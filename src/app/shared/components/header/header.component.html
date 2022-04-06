@@ -33,7 +33,7 @@
             <button mat-menu-item routerLink="/signup"><b>Sign up</b></button>
           </mat-menu>
         </div>
-        <div class="col-lg-2 col-4" style="text-align: center;">
+        <div class="col-lg-2 col-sm-2 col-4" style="text-align: center;">
           
           <button class="btn btn-primary" *ngIf="userIsPresent" mat-button [matMenuTriggerFor]="menu1">
             <a class="text-muted" style="text-decoration: none;"><b style="color: white;" mat-button [matMenuTriggerFor]="logoutMenu" *ngIf="currentUser">{{this.currentUser.email}}</b></a>
