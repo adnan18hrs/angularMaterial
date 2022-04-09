@@ -3,10 +3,10 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SignupData } from '../model/SignupData';SignupData
 
-const baseSignUpUrl = 'https://adnan-springboot-mongo-swagger.herokuapp.com/api/auth/signup';
-const baseUpdateUrl = 'https://adnan-springboot-mongo-swagger.herokuapp.com/api/user/updateUser';
-//const baseSignUpUrl = 'http://localhost:8080/api/auth/signup';
-//const baseUpdateUrl = 'http://localhost:8080/api/user/updateUser';
+//const baseSignUpUrl = 'https://adnan-springboot-mongo-swagger.herokuapp.com/api/auth/signup';
+//const baseUpdateUrl = 'https://adnan-springboot-mongo-swagger.herokuapp.com/api/user/updateUser';
+const baseSignUpUrl = 'http://localhost:8080/api/auth/signup';
+const baseUpdateUrl = 'http://localhost:8080/api/user/updateUser';
 
 @Injectable({
   providedIn: 'root'

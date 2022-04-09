@@ -123,7 +123,7 @@ export class LoginComponent implements OnInit {
   public updateProfile(dataUI:SignupData){
     dataUI.email = dataUI.username;
     console.log("dataUI.password ",dataUI.password);
-    if(dataUI.repassword&&dataUI.password!=null&&dataUI.password==dataUI.repassword){
+    if(dataUI.repassword&&dataUI.password&&dataUI.password==dataUI.repassword){
       this.signupservice.tryUpdating(dataUI,this.headers).subscribe(
         (response:any)=>{
           if(response['message']=="Successfully updated user data"){
